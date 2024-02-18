@@ -1,0 +1,40 @@
+.email-container, .socials-container {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  transition: all 0.2s;
+  overflow: visible;
+}
+
+.email-container {
+  margin-bottom: 16px;
+}
+
+.socials-container {
+  flex-direction: row;
+}
+
+.social {
+  margin: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.social .social-name {
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.email {
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 400;
+  margin-left: 0.25em;
+  margin-right: 2px;
+  transition: all 0.2s;
+}
+.email:hover {
+  /*color: #262445;*/
+  text-decoration: underline;
+}/*# sourceMappingURL=contact.css.map */

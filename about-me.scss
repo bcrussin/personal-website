@@ -1,0 +1,94 @@
+@import "variables.scss";
+
+#about-me {
+	max-width: 1000px;
+	margin-bottom: 24px;
+
+	p {
+		max-width: 600px;
+		width: auto;
+		height: fit-content;
+		font-family: $system-sans;
+	}
+
+	.image {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	img {
+		max-width: 200px;
+		min-height: 0;
+		max-height: 240px;
+		height: auto;
+		object-fit: cover;
+	}
+
+	.row-right {
+		p {
+			text-align: left;
+			margin-left: 16px;
+		}
+
+		img {
+			padding-right: 8px;
+			border-radius: 8px;
+		}
+	}
+
+	.row-left {
+		p {
+			text-align: right;
+			margin-right: 16px;
+		}
+
+		img {
+			padding-left: 8px;
+			border-radius: 8px;
+		}
+	}
+}
+
+.about-me-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	max-width: 100%;
+	align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+	#about-me .gradient-blue::after {
+		display: none;
+		max-height: 160px;
+	}
+
+	.about-me-row {
+		flex-direction: column;
+	}
+
+	#about-me {
+		.row-left {
+			p {
+				text-align: left;
+				margin-right: 0;
+			}
+			
+			img {
+				padding: 0;
+			}
+		}
+
+		.row-right {
+			p {
+				margin-left: 0;
+			}
+			
+			img {
+				padding: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+    "HTML/CSS": {
+        "color": "#b676ea",
+        "isTextLight": false
+    },
+
+    "JavaScript": {
+        "color": "#f0db4f",
+        "isTextLight": false
+    },
+
+    "localStorage": {
+        "color": "#eab676",
+        "isTextLight": false
+    },
+
+    "Web App": {
+        "color": "#ea99a2",
+        "isTextLight": false
+    },
+    
+    "Game Development": {
+        "color": "#76aaea",
+        "isTextLight": false
+    }
+}
