@@ -227,7 +227,7 @@ main a {
   flex-direction: column;
   justify-content: center;
   width: fit-content;
-  min-height: calc(100vh - 80px);
+  min-height: min(100vh - 80px, 1200px);
 }
 
 .section-header {
