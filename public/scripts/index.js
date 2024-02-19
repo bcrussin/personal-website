@@ -16,7 +16,7 @@ let tagsData;
 startFaded();
 window.onload = () => {
 	fadeIn();
-	fetch("../storage/tags.json")
+	fetch("storage/tags.json")
 		.then((res) => res.json())
 		.then((data) => {
 			tagsData = data;
@@ -43,7 +43,7 @@ function fadeIn() {
 }
 
 function populatePortfolio() {
-	fetch("../storage/portfolio.json")
+	fetch("storage/portfolio.json")
 		.then((res) => res.json())
 		.then((data) => {
 			for (project of data) {
