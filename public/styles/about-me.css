@@ -20,22 +20,27 @@
   max-height: 240px;
   height: auto;
   object-fit: cover;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5019607843);
 }
 #about-me .row-right p {
   text-align: left;
   margin-left: 16px;
 }
 #about-me .row-right img {
-  padding-right: 8px;
+  margin-right: 8px;
   border-radius: 8px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 #about-me .row-left p {
   text-align: right;
   margin-right: 16px;
 }
 #about-me .row-left img {
-  padding-left: 8px;
+  margin-left: 8px;
   border-radius: 8px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .about-me-row {
