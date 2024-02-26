@@ -401,6 +401,7 @@ main {
 .skill {
 	margin: 8px 16px;
 	display: flex;
+	flex: 1 1 0px;
 	flex-direction: column;
 	align-items: center;
 	transition: filter 0.9s $super-ease-in-out;
@@ -413,9 +414,11 @@ main {
 
 	& > img {
 		min-width: 50px;
-		width: auto;
 		min-height: 50px;
+		width: auto;
 		height: 6vw;
+		max-width: 120px;
+		max-height: 120px;
 	}
 
 	& > span {
