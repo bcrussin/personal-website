@@ -52,8 +52,9 @@ main a {
 }
 
 .dark-background {
-  -webkit-backdrop-filter: brightness(70%) blur(20px);
-  backdrop-filter: brightness(70%) blur(20px);
+  /*-webkit-backdrop-filter: brightness(70%) blur(20px);
+  backdrop-filter: brightness(70%) blur(20px);*/
+  background-color: #302d53;
   z-index: 100;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3764705882);
 }
