@@ -181,8 +181,8 @@ main a {
   margin: 0;
   padding: 0 20px;
   padding-bottom: 20px;
-  background: linear-gradient(to bottom, rgba(28, 27, 61, 0.9411764706) 0, #1c1b3d 8px, rgba(28, 27, 61, 0.6274509804) 50%, rgba(28, 27, 61, 0.6274509804) 100%);
-  -webkit-backdrop-filter: brightness(0.7) blur(50px);
+  background: linear-gradient(to bottom, #1c1b3d 0, rgba(28, 27, 61, 0.9411764706) 8px, rgba(28, 27, 61, 0.5019607843) 50%, rgba(28, 27, 61, 0.5019607843) 100%);
+  -webkit-backdrop-filter: brightness(0.5) blur(20px);
   backdrop-filter: brightness(0.5) blur(20px);
   mask: linear-gradient(to top, transparent, black 20px);
 }
