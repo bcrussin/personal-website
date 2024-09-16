@@ -18,6 +18,8 @@ $super-ease-in: cubic-bezier(0.33, 0, 0.68, 0);
 $super-ease-in-out: cubic-bezier(0.1, 0.5, 0.15, 0.8);
 $super-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
 
-$blue-noise: linear-gradient(35deg, #3b3867e4, #3f3d6da0), url(noise.svg);
+// $blue-noise: linear-gradient(35deg, #3b3867e4, #3f3d6da0), url(noise.svg);
+$background-color: #111111;
+$blue-noise: linear-gradient(0deg, black, black);
 $primary-gradient-old: linear-gradient(100deg, #b2281e, rgb(179, 43, 34) 30%, #c2362c 60%, #d34338 100%);
 $primary-gradient: linear-gradient(100deg, #d62b39, #e23745 30%, #e64a3f 60%, #e45147 100%);
