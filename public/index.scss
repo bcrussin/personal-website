@@ -42,7 +42,14 @@ main {
 }
 
 .section {
+	position: relative;
 	padding-bottom: 20px !important;
+
+	&.dark-background {
+		border: 2px solid #eeeeee40;
+		border-left: none;
+		border-right: none;
+	}
 }
 
 .noise {
@@ -68,7 +75,7 @@ main {
 .dark-background {
 	/*-webkit-backdrop-filter: brightness(70%) blur(20px);
 	backdrop-filter: brightness(70%) blur(20px);*/
-	background-color: #333333; //#302d53;
+	background-color: $background-color; //#302d53;
 	z-index: 100;
 	box-shadow: 0 0 16px #00000060;
 }
@@ -124,7 +131,9 @@ main {
 	}
 }
 
-.gradient-blue {
+.gradient-accent {
+	$thickness: -4px;
+
 	position: relative;
 	width: fit-content;
 	height: fit-content;
@@ -132,28 +141,31 @@ main {
 	&::after {
 		content: "";
 		position: absolute;
-		-webkit-backdrop-filter: blur(50px) brightness(1.4);
-		backdrop-filter: blur(50px) brightness(1.4);
+		background-color: #e0e0e0a0;
 		z-index: 90;
+	}
+
+	&.glow::after {
+		filter: drop-shadow(0 0 4px #e0e0e0c0);
 	}
 
 	&.right::after {
 		left: 100%;
-		right: -4px;
+		right: $thickness;
 		top: 0;
 		height: 100%;
 	}
 
 	&.left::after {
 		right: 100%;
-		left: -4px;
+		left: $thickness;
 		top: 0;
 		height: 100%;
 	}
 
 	&.bottom::after {
 		top: 100%;
-		bottom: -4px;
+		bottom: $thickness;
 		left: 0;
 		width: 100%;
 	}
@@ -205,10 +217,10 @@ main {
 	margin: 0;
 	padding: 0 20px;
 	padding-bottom: $navbar-blur;
-	background-color: #11111120;
+	background-color: #111111a0;
 	// background: linear-gradient(to bottom, #1c1b3d 0, #1c1b3df0 8px, #1c1b3d80 50%, #1c1b3d80 100%);
-	-webkit-backdrop-filter: brightness(0.5) blur(20px);
-	backdrop-filter: brightness(0.8) blur(20px);
+	-webkit-backdrop-filter: brightness(0.4) blur(20px);
+	backdrop-filter: brightness(0.4) blur(20px);
 	mask: linear-gradient(to top, transparent, black $navbar-blur);
 }
 

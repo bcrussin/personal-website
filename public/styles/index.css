@@ -37,7 +37,13 @@ main a {
 }
 
 .section {
+  position: relative;
   padding-bottom: 20px !important;
+}
+.section.dark-background {
+  border: 2px solid rgba(238, 238, 238, 0.2509803922);
+  border-left: none;
+  border-right: none;
 }
 
 .noise {
@@ -61,7 +67,7 @@ main a {
 .dark-background {
   /*-webkit-backdrop-filter: brightness(70%) blur(20px);
   backdrop-filter: brightness(70%) blur(20px);*/
-  background-color: #333333;
+  background-color: #111111;
   z-index: 100;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3764705882);
 }
@@ -114,31 +120,33 @@ main a {
   background-image: linear-gradient(100deg, #d62b39, #e23745 30%, #e64a3f 60%, #e45147 100%);
 }
 
-.gradient-blue {
+.gradient-accent {
   position: relative;
   width: fit-content;
   height: fit-content;
 }
-.gradient-blue::after {
+.gradient-accent::after {
   content: "";
   position: absolute;
-  -webkit-backdrop-filter: blur(50px) brightness(1.4);
-  backdrop-filter: blur(50px) brightness(1.4);
+  background-color: rgba(224, 224, 224, 0.6274509804);
   z-index: 90;
 }
-.gradient-blue.right::after {
+.gradient-accent.glow::after {
+  filter: drop-shadow(0 0 4px rgba(224, 224, 224, 0.7529411765));
+}
+.gradient-accent.right::after {
   left: 100%;
   right: -4px;
   top: 0;
   height: 100%;
 }
-.gradient-blue.left::after {
+.gradient-accent.left::after {
   right: 100%;
   left: -4px;
   top: 0;
   height: 100%;
 }
-.gradient-blue.bottom::after {
+.gradient-accent.bottom::after {
   top: 100%;
   bottom: -4px;
   left: 0;
@@ -188,9 +196,9 @@ main a {
   margin: 0;
   padding: 0 20px;
   padding-bottom: 20px;
-  background-color: rgba(17, 17, 17, 0.1254901961);
-  -webkit-backdrop-filter: brightness(0.5) blur(20px);
-  backdrop-filter: brightness(0.8) blur(20px);
+  background-color: rgba(17, 17, 17, 0.6274509804);
+  -webkit-backdrop-filter: brightness(0.4) blur(20px);
+  backdrop-filter: brightness(0.4) blur(20px);
   mask: linear-gradient(to top, transparent, black 20px);
 }
 
