@@ -1,6 +1,7 @@
 const FADE_TIMER = 250;
 const FADE_DELAY = 300;
 
+const navbar = document.getElementById('navbar');
 const title = document.getElementById("title");
 const subtitle = document.getElementById("subtitle");
 const socialButtons = document.getElementById("social-buttons");
@@ -31,6 +32,8 @@ let tagsData;
 
 startFaded();
 window.onload = () => {
+    calculateHeaderSize();
+
 	fadeIn();
 	fetch("storage/tags.json")
 		.then((res) => res.json())
@@ -39,6 +42,11 @@ window.onload = () => {
 			populatePortfolio();
 		});
 };
+
+function calculateHeaderSize() {
+    let height = Math.min((window.innerHeight - navbar.clientHeight), 1200);
+    document.getElementById('home').style.minHeight = height + 'px';
+}
 
 function startFaded() {
 	fadeQueue = [title, subtitle, socialButtons, learnMore];
@@ -191,6 +199,7 @@ addEventListener("resize", () => {
 	BACKGROUND.width = BACKGROUND.clientWidth;
 	BACKGROUND.height = BACKGROUND.clientHeight;
 
+    calculateHeaderSize();
     initBackground();
 });
 
