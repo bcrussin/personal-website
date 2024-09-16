@@ -13,6 +13,7 @@ const BG = BACKGROUND.getContext("2d");
 const LIGHT_TEXT = "#e0e0e0";
 const DARK_TEXT = "#131313";
 
+let windowHeight;
 let mouseX = 0;
 let mouseY = 0;
 let isTouchDevice = false;
@@ -44,6 +45,11 @@ window.onload = () => {
 };
 
 function calculateHeaderSize() {
+    if (window.outerHeight == windowHeight) {
+        return;
+    }
+    windowHeight = window.outerHeight;
+
     let height = Math.min((window.innerHeight - navbar.clientHeight), 1200);
     document.getElementById('home').style.minHeight = height + 'px';
 }
