@@ -19,6 +19,7 @@ let isTouchDevice = false;
 document.addEventListener("pointermove", (e) => {
     if (e.pointerType != "mouse") {
         isTouchDevice = true;
+        return;
     }
 
 	mouseX = e.clientX;
