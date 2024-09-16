@@ -15,7 +15,7 @@ const DARK_TEXT = "#131313";
 let mouseX = 0;
 let mouseY = 0;
 
-document.addEventListener("pointermove", (e) => {
+document.addEventListener("mousemove", (e) => {
 	mouseX = e.clientX;
 	mouseY = e.clientY;
 });
@@ -159,9 +159,9 @@ let hoverEffectTimer = 0;
 let useHoverEffect = false;
 
 // Expand radius when hovering over links
-document.addEventListener("pointerover", (e) => handleHoverEffects(e));
-document.addEventListener("pointerdown", (e) => handleHoverEffects(e));
-document.addEventListener("pointerup", (e) => (useHoverEffect = false));
+document.addEventListener("mouseover", (e) => handleHoverEffects(e));
+document.addEventListener("mousedown", (e) => handleHoverEffects(e));
+document.addEventListener("mouseup", (e) => (useHoverEffect = false));
 
 function handleHoverEffects(e) {
 	if (e.target.closest("a") !== null) {
@@ -175,11 +175,27 @@ function handleHoverEffects(e) {
 addEventListener("resize", () => {
 	BACKGROUND.width = BACKGROUND.clientWidth;
 	BACKGROUND.height = BACKGROUND.clientHeight;
+
+    initBackground();
 });
 
 BACKGROUND.width = BACKGROUND.clientWidth;
 BACKGROUND.height = BACKGROUND.clientHeight;
-updateBackground();
+
+let dots = [];
+
+initBackground();
+requestAnimationFrame(updateBackground);
+
+function initBackground() {
+    dots = [];
+    for (let i = 0; i < BACKGROUND.width / gap; i++) {
+        dots.push([]);
+        for(let j = 0; j < BACKGROUND.height / gap; j++) {
+            dots[i].push({});
+        }
+    }
+}
 
 function updateBackground() {
 	let canvasWidth = BACKGROUND.width;
@@ -219,6 +235,16 @@ function updateBackground() {
 			let finalX = x + dx * finalDistance;
 			let finalY = y + dy * finalDistance;
 
+            let dot = dots[i][j];
+
+            if (dot.x == undefined || dot.y == undefined) {
+                dot.x = finalX;
+                dot.y = finalY;
+            } else {
+                dot.x += (finalX - dot.x) / 8;
+                dot.y += (finalY - dot.y) / 8;
+            }
+
 			// let currDistance = scale(HOVER_ANIM_TIME - hoverAnimTimer, 0, HOVER_ANIM_TIME, 0, bulgeEffect);
 			// if (distance < currDistance) {
 			//     BG.fillStyle = `rgba(240, 107, 97, ${alpha})`;
@@ -227,7 +253,7 @@ function updateBackground() {
 			// }
 
 			BG.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-			BG.fillText("•", finalX, finalY);
+			BG.fillText("•", dot.x, dot.y);
 		}
 	}
 
