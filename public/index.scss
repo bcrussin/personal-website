@@ -44,9 +44,11 @@ main {
 .section {
 	position: relative;
 	padding-bottom: 20px !important;
+	margin-bottom: 16px;
 
 	&.dark-background {
 		border: 2px solid #eeeeee40;
+		filter: drop-shadow(0 0 8px #eeeeee20);
 		border-left: none;
 		border-right: none;
 	}

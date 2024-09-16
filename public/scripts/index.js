@@ -14,8 +14,13 @@ const DARK_TEXT = "#131313";
 
 let mouseX = 0;
 let mouseY = 0;
+let isTouchDevice = false;
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("pointermove", (e) => {
+    if (e.pointerType == "mouse") {
+        isTouchDevice = true;
+    }
+
 	mouseX = e.clientX;
 	mouseY = e.clientY;
 });
@@ -161,9 +166,18 @@ let useHoverEffect = false;
 // Expand radius when hovering over links
 document.addEventListener("mouseover", (e) => handleHoverEffects(e));
 document.addEventListener("mousedown", (e) => handleHoverEffects(e));
-document.addEventListener("mouseup", (e) => (useHoverEffect = false));
+document.addEventListener("pointerup", (e) => {
+    if (e.pointerType == "mouse") {
+        useHoverEffect = false;
+    }
+});
 
 function handleHoverEffects(e) {
+    if (e.pointerType != "mouse") {
+        isTouchDevice = true;
+        return;
+    }
+
 	if (e.target.closest("a") !== null) {
 		useHoverEffect = true;
 	} else {
@@ -210,28 +224,32 @@ function updateBackground() {
 			let bulgeEffect = 0.24; // The intensity of the bulge effect
 			let fadeDist = 0.3;  // The radius at which dots reach full darkness
 			let brightnessUpperBound = 0.2; // The upper bound of the range mapped to normal brightness levels (basically max brightness ish)
+            let minBrightness = 0.1;
 
 			let x = i * gap;
 			let y = j * gap;
 
 			let dx = x - mouseX;
 			let dy = y - mouseY;
-
-			let angle = Math.atan2(dx, dy);
-
-			let distance = Math.hypot(dx, dy) / circleSize;
-
-			bulgeEffect += (bulgeEffect * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
-			fadeDist += (fadeDist * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 2;
-
-			let clampedDistance = Math.min(distance, bulgeEffect);
-			clampedDistance = bulgeEffect - clampedDistance;
-
-			let alpha = Math.max(scale(fadeDist - distance, 0, brightnessUpperBound, 0, 1), 0.1);
-
-			let finalDistance =
-				clampedDistance + clampedDistance * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
-
+            let finalDistance = 1;
+            let alpha = minBrightness;
+            
+            if (true) {
+                let distance = Math.hypot(dx, dy) / circleSize;
+    
+                bulgeEffect += (bulgeEffect * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
+                fadeDist += (fadeDist * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 2;
+    
+                let clampedDistance = Math.min(distance, bulgeEffect);
+                clampedDistance = bulgeEffect - clampedDistance;
+    
+                alpha = Math.max(scale(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
+    
+                finalDistance =
+                    clampedDistance + clampedDistance * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
+    
+            }
+            
 			let finalX = x + dx * finalDistance;
 			let finalY = y + dy * finalDistance;
 

@@ -39,9 +39,11 @@ main a {
 .section {
   position: relative;
   padding-bottom: 20px !important;
+  margin-bottom: 16px;
 }
 .section.dark-background {
   border: 2px solid rgba(238, 238, 238, 0.2509803922);
+  filter: drop-shadow(0 0 8px rgba(238, 238, 238, 0.1254901961));
   border-left: none;
   border-right: none;
 }
