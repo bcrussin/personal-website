@@ -181,18 +181,11 @@ let useHoverEffect = false;
 // Expand radius when hovering over links
 document.addEventListener("mouseover", (e) => handleHoverEffects(e));
 document.addEventListener("mousedown", (e) => handleHoverEffects(e));
-document.addEventListener("pointerup", (e) => {
-    if (e.pointerType == "mouse") {
-        useHoverEffect = false;
-    }
+document.addEventListener("mouseup", (e) => {
+    useHoverEffect = false;
 });
 
 function handleHoverEffects(e) {
-    if (e.pointerType != "mouse") {
-        isTouchDevice = true;
-        return;
-    }
-
 	if (e.target.closest("a") !== null) {
 		useHoverEffect = true;
 	} else {
