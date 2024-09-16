@@ -266,7 +266,7 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	width: fit-content;
-	// min-height: min(calc(100vh - $navbar-height), 1200px);
+	min-height: min(calc(100vh - $navbar-height), 1200px);
 }
 
 .section-header {
