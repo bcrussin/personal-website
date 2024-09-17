@@ -65,6 +65,7 @@
   right: 0;
   bottom: 0;
   background-color: #111111;
+  opacity: 0.8;
   filter: blur(40px);
 }
 

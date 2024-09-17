@@ -233,34 +233,42 @@ function updateBackground() {
 			let bulgeEffect = 0.24; // The intensity of the bulge effect
 			let fadeDist = 0.3;  // The radius at which dots reach full darkness
 			let brightnessUpperBound = 0.2; // The upper bound of the range mapped to normal brightness levels (basically max brightness ish)
-            let minBrightness = 0.1;
+            let minBrightness = 0.2;
+            let baseFontSize = 18;
+            let fontScaleEffect = 60;
+            let mx = 0;
+            let my = 0;
 
-			let x = i * gap;
-			let y = j * gap;
+            brightnessUpperBound = scaleToHover(brightnessUpperBound, 1, HOVER_EFFECT_STRENGTH, 0);
+
+			let x = i * gap + mx;
+			let y = j * gap + my;
 
 			let dx = x - mouseX;
 			let dy = y - mouseY;
             let finalDistance = 1;
             let alpha = minBrightness;
+
+            let clampedDistance;
             
             if (true) {
                 let distance = Math.hypot(dx, dy) / circleSize;
     
-                bulgeEffect += (bulgeEffect * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
-                fadeDist += (fadeDist * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 2;
+                bulgeEffect += (bulgeEffect * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
+                fadeDist += (fadeDist * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 1.4;
     
-                let clampedDistance = Math.min(distance, bulgeEffect);
+                clampedDistance = Math.min(distance, bulgeEffect);
                 clampedDistance = bulgeEffect - clampedDistance;
     
-                alpha = Math.max(scale(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
+                alpha = Math.max(mapToRange(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
     
                 finalDistance =
-                    clampedDistance + clampedDistance * scale(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
+                    clampedDistance + clampedDistance * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
     
             }
             
-			let finalX = x + dx * finalDistance;
-			let finalY = y + dy * finalDistance;
+			let finalX = x + dx * finalDistance - mx;
+			let finalY = y + dy * finalDistance - my;
 
             let dot = dots[i][j];
 
@@ -272,15 +280,17 @@ function updateBackground() {
                 dot.y += (finalY - dot.y) / 8;
             }
 
-			// let currDistance = scale(HOVER_ANIM_TIME - hoverAnimTimer, 0, HOVER_ANIM_TIME, 0, bulgeEffect);
+			// let currDistance = mapToRange(HOVER_ANIM_TIME - hoverAnimTimer, 0, HOVER_ANIM_TIME, 0, bulgeEffect);
 			// if (distance < currDistance) {
 			//     BG.fillStyle = `rgba(240, 107, 97, ${alpha})`;
 			// } else {
 			//     BG.fillStyle = `rgba(255, 255, 255, ${alpha})`;
 			// }
+            let fontSize = baseFontSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
 
+            BG.font = `${fontSize}px serif`;
 			BG.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-			BG.fillText("•", dot.x, dot.y);
+			BG.fillText("•", dot.x - (fontSize / 6), dot.y + (fontSize / 6));
 		}
 	}
 
@@ -294,8 +304,12 @@ function updateBackground() {
 	requestAnimationFrame(updateBackground);
 }
 
+function scaleToHover(value, div, min, max) {
+    return value + (value * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, min ?? 0, max ?? HOVER_EFFECT_STRENGTH * div));
+}
+
 // Map one range of numbers to another
-function scale(number, inMin, inMax, outMin, outMax) {
+function mapToRange(number, inMin, inMax, outMin, outMax) {
 	return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
 }
 
