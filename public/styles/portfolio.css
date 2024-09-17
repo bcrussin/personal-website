@@ -14,8 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  -webkit-backdrop-filter: brightness(80%) blur(20px);
-  backdrop-filter: brightness(80%) blur(20px);
+  background-color: #0f0f0f;
   z-index: 100;
   border: 2px solid rgba(255, 255, 255, 0.1254901961);
   margin-bottom: 32px;
@@ -51,6 +50,7 @@
   justify-content: stretch;
   padding: 0 32px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: small;
 }
 .portfolio-item .portfolio-summary .portfolio-links {
   flex: 1;
@@ -82,7 +82,7 @@
   font-size: 16pt;
   vertical-align: middle;
   text-decoration: none;
-  color: #e0e0e0;
+  color: #dddddd;
   opacity: 0.6;
   pointer-events: auto;
   transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);

@@ -44,5 +44,23 @@
             "JavaScript",
             "Game Development"
         ]
+    },
+    {
+        "title": "Personal Website",
+        "image": "images/portfolio/personal-website.png",
+        "description": [
+            "The website you're viewing right now. Written using pure HTML, SCSS, and Javascript."
+        ],
+        "links": [
+            {
+                "label": "Github",
+                "href": "https://github.com/bcrussin/personal-website"
+            }
+        ],
+        "tags": [
+            "HTML/CSS",
+            "SCSS",
+            "JavaScript"
+        ]
     }
 ]

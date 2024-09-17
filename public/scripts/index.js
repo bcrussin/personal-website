@@ -110,8 +110,9 @@ function populatePortfolio() {
 			let t = document.createElement("span");
 			t.classList.add("tag");
 			t.innerHTML = tag;
-			t.style.backgroundColor = tagsData[tag].color;
-			t.style.color = !!tagsData[tag].isTextLight ? LIGHT_TEXT : DARK_TEXT;
+
+			t.style.backgroundColor = tagsData?.[tag]?.color ?? 'lightgray';
+			t.style.color = !!tagsData?.[tag]?.isTextLight ? LIGHT_TEXT : DARK_TEXT;
 			tagsContainer.appendChild(t);
 		}
 		summary.appendChild(tagsContainer);

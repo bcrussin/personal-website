@@ -155,6 +155,7 @@ main a {
 }
 .orange-border:hover {
   border: 2px solid #e23745;
+  filter: drop-shadow(0 0 4px #e64a3f80);
 }
 
 @keyframes fade-in {

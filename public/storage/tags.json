@@ -4,6 +4,11 @@
         "isTextLight": false
     },
 
+    "SCSS": {
+        "color": "pink",
+        "isTextLight": false
+    },
+
     "JavaScript": {
         "color": "#f0db4f",
         "isTextLight": false
