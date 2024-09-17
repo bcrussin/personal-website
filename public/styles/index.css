@@ -155,7 +155,7 @@ main a {
 }
 .orange-border:hover {
   border: 2px solid #e23745;
-  filter: drop-shadow(0 0 4px #e64a3f80);
+  filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843));
 }
 
 @keyframes fade-in {
@@ -193,7 +193,7 @@ main a {
   margin: 0;
   padding: 0 20px;
   padding-bottom: 20px;
-  background-color: rgba(17, 17, 17, 0.6274509804);
+  background-color: rgba(22, 22, 22, 0.6274509804);
   -webkit-backdrop-filter: brightness(0.4) blur(20px);
   backdrop-filter: brightness(0.4) blur(20px);
   mask: linear-gradient(to top, transparent, black 20px);

@@ -172,6 +172,7 @@ main {
 
 	&:hover {
 		border: 2px solid #e23745;
+		filter: drop-shadow(0 0 4px $accent-fade);
 	}
 }
 
@@ -212,7 +213,7 @@ main {
 	margin: 0;
 	padding: 0 20px;
 	padding-bottom: $navbar-blur;
-	background-color: #111111a0;
+	background-color: #161616a0;
 	// background: linear-gradient(to bottom, #1c1b3d 0, #1c1b3df0 8px, #1c1b3d80 50%, #1c1b3d80 100%);
 	-webkit-backdrop-filter: brightness(0.4) blur(20px);
 	backdrop-filter: brightness(0.4) blur(20px);
