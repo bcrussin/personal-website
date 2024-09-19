@@ -6,12 +6,21 @@
   overflow: visible;
 }
 
-.email-container {
+.email-container,
+.socials-container,
+.source-link-container {
   margin-bottom: 16px;
 }
 
 .socials-container {
   flex-direction: row;
+}
+
+.source-link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0;
 }
 
 .social {
@@ -25,7 +34,8 @@
   margin-top: 4px;
 }
 
-.email {
+.email,
+.source-link {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -34,7 +44,19 @@
   margin-right: 2px;
   transition: all 0.2s;
 }
-.email:hover {
+.email:hover,
+.source-link:hover {
   /*color: #262445;*/
   text-decoration: underline;
-}/*# sourceMappingURL=contact.css.map */
+}
+
+.source-link {
+  font-size: smaller;
+  color: #dddddd;
+  opacity: 0.6;
+  font-family: monospace;
+  transition: opacity 0.3s cubic-bezier(0.1, 0.5, 0.15, 0.8);
+}
+.source-link:hover {
+  opacity: 1;
+}

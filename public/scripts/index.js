@@ -2,13 +2,17 @@ const FADE_TIMER = 250;
 const FADE_DELAY = 300;
 
 const navbar = document.getElementById('navbar');
+const navbarBlurs = document.querySelectorAll('.navbar .hide-background');
 const title = document.getElementById("title");
 const subtitle = document.getElementById("subtitle");
 const socialButtons = document.getElementById("social-buttons");
 const learnMore = document.getElementById("learn-more");
 
+
 const BACKGROUND = document.getElementById("background-canvas");
+const BACKGROUND_NAVBAR = document.getElementById("background-canvas-navbar");
 const BG = BACKGROUND.getContext("2d");
+const BG_NAV = BACKGROUND_NAVBAR.getContext('2d')
 
 const LIGHT_TEXT = "#e0e0e0";
 const DARK_TEXT = "#131313";
@@ -170,6 +174,35 @@ function populatePortfolio() {
 */
 }
 
+const SCROLL_Y_MAX = 140;
+const START_FADE_OPACITY = 0.4;
+const END_FADE_OPACITY = 0;
+
+const START_BG_OPACITY = 0;
+const END_BG_OPACITY = 0.8;
+
+function fadeNavbarBackground() {
+	let scroll = Math.min(window.scrollY, SCROLL_Y_MAX);
+	let dotsOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_FADE_OPACITY, END_FADE_OPACITY);
+	let bgOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_BG_OPACITY, END_BG_OPACITY);
+
+	BACKGROUND_NAVBAR.style.opacity = dotsOpacity;
+	// let filter = `brightness(${bgOpacity}) blur(10px)`;
+	// navbar.style.backdropFilter = filter;
+	navbar.style.setProperty('--backdrop-filter-opacity', bgOpacity);
+
+	// for (let elem of navbarBlurs) {
+	// 	elem.style.setProperty('--backdrop-filter', `brightness(${bgOpacity}) blur(20px)`);
+	// }
+
+	// navbar.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
+}
+
+addEventListener('scroll', (e) => {
+	fadeNavbarBackground();
+});
+fadeNavbarBackground();
+
 /* _____ DYNAMIC BACKGROUND _____ */
 
 let gap = 20;
@@ -196,15 +229,20 @@ function handleHoverEffects(e) {
 
 // Auto-resize canvas with browser window
 addEventListener("resize", () => {
-	BACKGROUND.width = BACKGROUND.clientWidth;
-	BACKGROUND.height = BACKGROUND.clientHeight;
+	resizeCanvas();
 
     calculateHeaderSize();
     initBackground();
 });
 
-BACKGROUND.width = BACKGROUND.clientWidth;
-BACKGROUND.height = BACKGROUND.clientHeight;
+resizeCanvas();
+
+function resizeCanvas() {
+	BACKGROUND.width = BACKGROUND.clientWidth;
+	BACKGROUND.height = BACKGROUND.clientHeight;
+	BACKGROUND_NAVBAR.width = BACKGROUND.clientWidth;
+	BACKGROUND_NAVBAR.height = BACKGROUND.clientHeight;
+}
 
 let dots = [];
 
@@ -233,17 +271,20 @@ function updateBackground() {
 			let circleSize = 400; // The radius at which the bulge effect is applied
 			let bulgeEffect = 0.24; // The intensity of the bulge effect
 			let fadeDist = 0.3;  // The radius at which dots reach full darkness
-			let brightnessUpperBound = 0.2; // The upper bound of the range mapped to normal brightness levels (basically max brightness ish)
+			let brightnessUpperBound = 0.15; // The upper bound of the range mapped to normal brightness levels (basically max brightness ish)
             let minBrightness = 0.2;
             let baseFontSize = 18;
             let fontScaleEffect = 60;
             let mx = 0;
             let my = 0;
 
-            brightnessUpperBound = scaleToHover(brightnessUpperBound, 1, HOVER_EFFECT_STRENGTH, 0);
-
 			let x = i * gap + mx;
 			let y = j * gap + my;
+			
+            
+			let yChange = mapToRange(Math.min(Math.max(y, 60), 180), 60, 180, minBrightness, 1);
+			brightnessUpperBound = scaleToHover(brightnessUpperBound, 1, HOVER_EFFECT_STRENGTH, 0);
+
 
 			let dx = x - mouseX;
 			let dy = y - mouseY;
@@ -262,6 +303,7 @@ function updateBackground() {
                 clampedDistance = bulgeEffect - clampedDistance;
     
                 alpha = Math.max(mapToRange(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
+				alpha = Math.min(alpha, yChange);
     
                 finalDistance =
                     clampedDistance + clampedDistance * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
@@ -294,6 +336,10 @@ function updateBackground() {
 			BG.fillText("•", dot.x - (fontSize / 6), dot.y + (fontSize / 6));
 		}
 	}
+
+	BG_NAV.clearRect(0, 0, canvasWidth, canvasHeight)
+	BG_NAV.drawImage(BACKGROUND, 0, 0,);
+
 
     // Transition between hover and non-hover states
 	if (useHoverEffect && hoverEffectTimer < HOVER_EFFECT_DURATION) {

@@ -1,3 +1,5 @@
+@import "_variables.scss";
+
 .email-container, .socials-container {
 	width: fit-content;
 	margin: auto;
@@ -6,12 +8,21 @@
 	overflow: visible;
 }
 
-.email-container {
+.email-container,
+.socials-container,
+.source-link-container {
 	margin-bottom: 16px;
 }
 
 .socials-container {
 	flex-direction: row;
+}
+
+.source-link-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 8px 0;
 }
 
 .social {
@@ -26,7 +37,8 @@
 	}
 }
 
-.email {
+.email,
+.source-link {
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
@@ -38,5 +50,17 @@
 	&:hover {
 		/*color: #262445;*/
 		text-decoration: underline;
+	}
+}
+
+.source-link {
+	font-size: smaller;
+	color: $light-text;
+	opacity: 0.6;
+	font-family: monospace;
+	transition: opacity 0.3s $super-ease-in-out;
+
+	&:hover {
+		opacity: 1;
 	}
 }
