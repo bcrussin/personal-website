@@ -25,17 +25,18 @@ html {
 	top: 0;
 	width: 100vw;
 	height: 100vh;
-	opacity: 0.3;
+	opacity: 0.4;
 	pointer-events: none;
 }
 
 #background-canvas {
-	// clip-path: rect($navbar-height 0 100% 100%);
+	clip-path: rect($navbar-height 0 100% 100%);
 }
 
 #background-canvas-navbar {
+	clip-path: rect(0 0 $navbar-height 100%);
 	z-index: 500;
-	opacity: 0.2;
+	opacity: 0.4;
 }
 
 main {

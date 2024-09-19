@@ -257,6 +257,9 @@ function initBackground() {
             dots[i].push({});
         }
     }
+
+	mouseX = null;
+	mouseY = null;
 }
 
 function updateBackground() {
@@ -286,14 +289,23 @@ function updateBackground() {
 			brightnessUpperBound = scaleToHover(brightnessUpperBound, 1, HOVER_EFFECT_STRENGTH, 0);
 
 
-			let dx = x - mouseX;
-			let dy = y - mouseY;
+			let dx = x;
+			let dy = y;
+			
             let finalDistance = 1;
             let alpha = minBrightness;
 
             let clampedDistance;
+
+			let finalX = x;
+			let finalY = y;
+
+			let fontSize = baseFontSize;
             
-            if (true) {
+            if (mouseX != undefined && mouseY != undefined) {
+				dx = x - mouseX;
+				dy = y - mouseY;
+
                 let distance = Math.hypot(dx, dy) / circleSize;
     
                 bulgeEffect += (bulgeEffect * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
@@ -308,10 +320,11 @@ function updateBackground() {
                 finalDistance =
                     clampedDistance + clampedDistance * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
     
+				finalX = x + dx * finalDistance - mx;
+				finalY = y + dy * finalDistance - my;
+
+				fontSize = baseFontSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
             }
-            
-			let finalX = x + dx * finalDistance - mx;
-			let finalY = y + dy * finalDistance - my;
 
             let dot = dots[i][j];
 
@@ -328,8 +341,7 @@ function updateBackground() {
 			//     BG.fillStyle = `rgba(240, 107, 97, ${alpha})`;
 			// } else {
 			//     BG.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-			// }
-            let fontSize = baseFontSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
+			// } 
 
             BG.font = `${fontSize}px serif`;
 			BG.fillStyle = `rgba(255, 255, 255, ${alpha})`;
