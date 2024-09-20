@@ -14,13 +14,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #0f0f0f;
+  background-color: var(--background-color);
   z-index: 100;
-  border: 2px solid rgba(255, 255, 255, 0.1254901961);
+  border: 2px solid var(--border-color);
   margin-bottom: 32px;
   border-radius: 12px;
   box-sizing: border-box;
   overflow: hidden;
+  transition: border 0.3s, background-color 0.3s;
 }
 .portfolio-item img {
   width: 100%;
@@ -82,7 +83,7 @@
   font-size: 16pt;
   vertical-align: middle;
   text-decoration: none;
-  color: #dddddd;
+  color: var(--text-color);
   opacity: 0.6;
   pointer-events: auto;
   transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);

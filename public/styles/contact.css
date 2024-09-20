@@ -52,7 +52,7 @@
 
 .source-link {
   font-size: smaller;
-  color: #dddddd;
+  color: var(--text-color);
   opacity: 0.6;
   font-family: monospace;
   transition: opacity 0.3s cubic-bezier(0.1, 0.5, 0.15, 0.8);

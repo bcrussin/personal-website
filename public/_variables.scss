@@ -8,7 +8,8 @@ $navbar-blur: 20px;
 
 $social-button-size: 36pt;
 
-$light-text: #dddddd;
+$text-color: var(--text-color);
+$border-color: var(--border-color);
 // $light-text: #333333;
 $link-color: #367bf5;
 
@@ -21,7 +22,9 @@ $super-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
 
 // $blue-noise: linear-gradient(35d`eg, #3b3867e4, #3f3d6da0), url(noise.svg);
 // $background-color: #eeeeee;
-$background-color: #101010;
+$navbar-backdrop-brightness: var(--navbar-backdrop-brightness);
+
+$background-color: var(--background-color);
 $accent: #e23745;
 $accent-fade: #e64a3f80;
 $blue-noise: linear-gradient(0deg, black, black);

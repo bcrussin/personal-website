@@ -1,0 +1,17 @@
+{
+    "light": {
+        "background-color": "#eeeeee",
+        "text-color": "#222222",
+        "border-color": "#00000020",
+        "navbar-backdrop-brightness": 1,
+        "bg-canvas-filter": "brightness(0.6) invert(1)"
+    },
+
+    "dark": {
+        "background-color": "#101010",
+        "text-color": "#dddddd",
+        "border-color": "#ffffff20",
+        "navbar-backdrop-brightness": 0.4,
+        "bg-canvas-filter": "none"
+    }
+}

@@ -64,7 +64,8 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: #101010;
+  background-color: var(--background-color);
+  transition: background-color 0.3s;
   opacity: 0.8;
   filter: blur(40px);
 }

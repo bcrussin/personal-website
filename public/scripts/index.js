@@ -1,18 +1,17 @@
 const FADE_TIMER = 250;
 const FADE_DELAY = 300;
 
-const navbar = document.getElementById('navbar');
-const navbarBlurs = document.querySelectorAll('.navbar .hide-background');
+const navbar = document.getElementById("navbar");
+const navbarBlurs = document.querySelectorAll(".navbar .hide-background");
 const title = document.getElementById("title");
 const subtitle = document.getElementById("subtitle");
 const socialButtons = document.getElementById("social-buttons");
 const learnMore = document.getElementById("learn-more");
 
-
 const BACKGROUND = document.getElementById("background-canvas");
 const BACKGROUND_NAVBAR = document.getElementById("background-canvas-navbar");
 const BG = BACKGROUND.getContext("2d");
-const BG_NAV = BACKGROUND_NAVBAR.getContext('2d')
+const BG_NAV = BACKGROUND_NAVBAR.getContext("2d");
 
 const LIGHT_TEXT = "#e0e0e0";
 const DARK_TEXT = "#131313";
@@ -23,10 +22,10 @@ let mouseY = 0;
 let isTouchDevice = false;
 
 document.addEventListener("pointermove", (e) => {
-    if (e.pointerType != "mouse") {
-        isTouchDevice = true;
-        return;
-    }
+	if (e.pointerType != "mouse") {
+		isTouchDevice = true;
+		return;
+	}
 
 	mouseX = e.clientX;
 	mouseY = e.clientY;
@@ -37,7 +36,7 @@ let tagsData;
 
 startFaded();
 window.onload = () => {
-    calculateHeaderSize();
+	calculateHeaderSize();
 
 	fadeIn();
 	fetch("storage/tags.json")
@@ -49,13 +48,13 @@ window.onload = () => {
 };
 
 function calculateHeaderSize() {
-    if (window.outerHeight == windowHeight) {
-        return;
-    }
-    windowHeight = window.outerHeight;
+	if (window.outerHeight == windowHeight) {
+		return;
+	}
+	windowHeight = window.outerHeight;
 
-    let height = Math.min((window.innerHeight - navbar.clientHeight), 1200);
-    document.getElementById('home').style.minHeight = height + 'px';
+	let height = Math.min(window.innerHeight - navbar.clientHeight, 1200);
+	document.getElementById("home").style.minHeight = height + "px";
 }
 
 function startFaded() {
@@ -115,7 +114,7 @@ function populatePortfolio() {
 			t.classList.add("tag");
 			t.innerHTML = tag;
 
-			t.style.backgroundColor = tagsData?.[tag]?.color ?? 'lightgray';
+			t.style.backgroundColor = tagsData?.[tag]?.color ?? "lightgray";
 			t.style.color = !!tagsData?.[tag]?.isTextLight ? LIGHT_TEXT : DARK_TEXT;
 			tagsContainer.appendChild(t);
 		}
@@ -179,7 +178,7 @@ const START_FADE_OPACITY = 0.4;
 const END_FADE_OPACITY = 0;
 
 const START_BG_OPACITY = 0;
-const END_BG_OPACITY = 0.8;
+const END_BG_OPACITY = 1;
 
 function fadeNavbarBackground() {
 	let scroll = Math.min(window.scrollY, SCROLL_Y_MAX);
@@ -189,7 +188,7 @@ function fadeNavbarBackground() {
 	BACKGROUND_NAVBAR.style.opacity = dotsOpacity;
 	// let filter = `brightness(${bgOpacity}) blur(10px)`;
 	// navbar.style.backdropFilter = filter;
-	navbar.style.setProperty('--backdrop-filter-opacity', bgOpacity);
+	navbar.style.setProperty("--backdrop-filter-opacity", bgOpacity);
 
 	// for (let elem of navbarBlurs) {
 	// 	elem.style.setProperty('--backdrop-filter', `brightness(${bgOpacity}) blur(20px)`);
@@ -198,10 +197,39 @@ function fadeNavbarBackground() {
 	// navbar.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
 }
 
-addEventListener('scroll', (e) => {
+addEventListener("scroll", (e) => {
 	fadeNavbarBackground();
 });
 fadeNavbarBackground();
+
+/* _____ THEMING _____ */
+let themesData;
+fetch("storage/themes.json")
+	.then((res) => res.json())
+	.then((data) => {
+		themesData = data;
+		console.log(themesData)
+		applyTheme('dark')
+	});
+
+
+let currentTheme;
+function applyTheme(theme) {
+	let themeData = themesData[theme];
+
+	Object.entries(themeData).forEach(([property, value]) => {
+		console.log(property, value)
+		document.documentElement.style.setProperty("--" + property, value);
+	});
+
+	currentTheme = theme;
+}
+
+function toggleTheme() {
+	let newTheme = currentTheme == 'dark' ? 'light' : 'dark';
+
+	applyTheme(newTheme)
+}
 
 /* _____ DYNAMIC BACKGROUND _____ */
 
@@ -216,7 +244,7 @@ let useHoverEffect = false;
 document.addEventListener("mouseover", (e) => handleHoverEffects(e));
 document.addEventListener("mousedown", (e) => handleHoverEffects(e));
 document.addEventListener("mouseup", (e) => {
-    useHoverEffect = false;
+	useHoverEffect = false;
 });
 
 function handleHoverEffects(e) {
@@ -231,8 +259,8 @@ function handleHoverEffects(e) {
 addEventListener("resize", () => {
 	resizeCanvas();
 
-    calculateHeaderSize();
-    initBackground();
+	calculateHeaderSize();
+	initBackground();
 });
 
 resizeCanvas();
@@ -250,13 +278,13 @@ initBackground();
 requestAnimationFrame(updateBackground);
 
 function initBackground() {
-    dots = [];
-    for (let i = 0; i < BACKGROUND.width / gap; i++) {
-        dots.push([]);
-        for(let j = 0; j < BACKGROUND.height / gap; j++) {
-            dots[i].push({});
-        }
-    }
+	dots = [];
+	for (let i = 0; i < BACKGROUND.width / gap; i++) {
+		dots.push([]);
+		for (let j = 0; j < BACKGROUND.height / gap; j++) {
+			dots[i].push({});
+		}
+	}
 
 	mouseX = null;
 	mouseY = null;
@@ -273,87 +301,99 @@ function updateBackground() {
 		for (let j = 0; j < canvasHeight / gap; j++) {
 			let circleSize = 400; // The radius at which the bulge effect is applied
 			let bulgeEffect = 0.24; // The intensity of the bulge effect
-			let fadeDist = 0.3;  // The radius at which dots reach full darkness
+			let fadeDist = 0.3; // The radius at which dots reach full darkness
 			let brightnessUpperBound = 0.15; // The upper bound of the range mapped to normal brightness levels (basically max brightness ish)
-            let minBrightness = 0.2;
-            let baseFontSize = 18;
-            let fontScaleEffect = 60;
-            let mx = 0;
-            let my = 0;
+			let minBrightness = 0.2;
+			let baseFontSize = 18;
+			let fontScaleEffect = 60;
+			let mx = 0;
+			let my = 0;
 
 			let x = i * gap + mx;
 			let y = j * gap + my;
-			
-            
+
 			let yChange = mapToRange(Math.min(Math.max(y, 60), 180), 60, 180, minBrightness, 1);
 			brightnessUpperBound = scaleToHover(brightnessUpperBound, 1, HOVER_EFFECT_STRENGTH, 0);
 
-
 			let dx = x;
 			let dy = y;
-			
-            let finalDistance = 1;
-            let alpha = minBrightness;
 
-            let clampedDistance;
+			let finalDistance = 1;
+			let alpha = minBrightness;
+
+			let clampedDistance;
 
 			let finalX = x;
 			let finalY = y;
 
 			let fontSize = baseFontSize;
-            
-            if (mouseX != undefined && mouseY != undefined) {
+
+			if (mouseX != undefined && mouseY != undefined) {
 				dx = x - mouseX;
 				dy = y - mouseY;
 
-                let distance = Math.hypot(dx, dy) / circleSize;
-    
-                bulgeEffect += (bulgeEffect * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
-                fadeDist += (fadeDist * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 1.4;
-    
-                clampedDistance = Math.min(distance, bulgeEffect);
-                clampedDistance = bulgeEffect - clampedDistance;
-    
-                alpha = Math.max(mapToRange(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
+				let distance = Math.hypot(dx, dy) / circleSize;
+
+				bulgeEffect += (bulgeEffect * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
+				fadeDist += (fadeDist * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 1.4;
+
+				clampedDistance = Math.min(distance, bulgeEffect);
+				clampedDistance = bulgeEffect - clampedDistance;
+
+				alpha = Math.max(mapToRange(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
 				alpha = Math.min(alpha, yChange);
-    
-                finalDistance =
-                    clampedDistance + clampedDistance * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
-    
+
+				finalDistance =
+					clampedDistance +
+					clampedDistance * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
+
 				finalX = x + dx * finalDistance - mx;
 				finalY = y + dy * finalDistance - my;
 
 				fontSize = baseFontSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
-            }
+			}
 
-            let dot = dots[i][j];
+			let dot = dots[i][j];
 
-            if (dot.x == undefined || dot.y == undefined) {
-                dot.x = finalX;
-                dot.y = finalY;
-            } else {
-                dot.x += (finalX - dot.x) / 8;
-                dot.y += (finalY - dot.y) / 8;
-            }
+			if (dot.x == undefined || dot.y == undefined) {
+				dot.x = finalX;
+				dot.y = finalY;
+				dot.size = fontSize;
+				dot.alpha = alpha;
+			} else {
+				let shrinkSpeed = 12;
+				let growSpeed = 2;
+				
+				let speed;
+				if (fontSize > dot.size) {
+					speed = growSpeed;
+				} else {
+					speed = shrinkSpeed;
+				}
+
+				dot.x += (finalX - dot.x) / speed;
+				dot.y += (finalY - dot.y) / speed;
+				dot.size += (fontSize - dot.size) / speed;
+				dot.alpha += (alpha - dot.alpha) / (speed / 2);
+			}
 
 			// let currDistance = mapToRange(HOVER_ANIM_TIME - hoverAnimTimer, 0, HOVER_ANIM_TIME, 0, bulgeEffect);
 			// if (distance < currDistance) {
 			//     BG.fillStyle = `rgba(240, 107, 97, ${alpha})`;
 			// } else {
 			//     BG.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-			// } 
+			// }
 
-            BG.font = `${fontSize}px serif`;
-			BG.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-			BG.fillText("•", dot.x - (fontSize / 6), dot.y + (fontSize / 6));
+			BG.font = `${dot.size}px serif`;
+			BG.fillStyle = `rgba(255, 255, 255, ${dot.alpha})`;
+			BG.fillText("•", dot.x - fontSize / 6, dot.y + fontSize / 6);
 		}
 	}
 
-	BG_NAV.clearRect(0, 0, canvasWidth, canvasHeight)
-	BG_NAV.drawImage(BACKGROUND, 0, 0,);
+	BG_NAV.clearRect(0, 0, canvasWidth, canvasHeight);
+	BG_NAV.drawImage(BACKGROUND, 0, 0);
 
-
-    // Transition between hover and non-hover states
+	// Transition between hover and non-hover states
 	if (useHoverEffect && hoverEffectTimer < HOVER_EFFECT_DURATION) {
 		hoverEffectTimer += (HOVER_EFFECT_DURATION - hoverEffectTimer) / HOVER_EFFECT_DURATION;
 	} else if (!useHoverEffect && hoverEffectTimer > 0) {
@@ -364,7 +404,9 @@ function updateBackground() {
 }
 
 function scaleToHover(value, div, min, max) {
-    return value + (value * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, min ?? 0, max ?? HOVER_EFFECT_STRENGTH * div));
+	return (
+		value + value * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, min ?? 0, max ?? HOVER_EFFECT_STRENGTH * div)
+	);
 }
 
 // Map one range of numbers to another
