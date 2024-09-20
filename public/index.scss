@@ -154,12 +154,15 @@ main {
 	&::after {
 		content: "";
 		position: absolute;
-		background-color: #e0e0e0a0;
+		background-color: $text-color;
+		opacity: 0.8;
 		z-index: 90;
+		transition: background-color 0.3s;
 	}
 
 	&.glow::after {
-		filter: drop-shadow(0 0 4px #e0e0e0c0);
+		filter: drop-shadow(0 0 4px $text-color);
+		transition: filter 0.3s;
 	}
 
 	&.right::after {
@@ -291,6 +294,19 @@ main {
 	}
 }
 
+#theme-button {
+	border: none;
+	background: none;
+	z-index: 900;
+	margin-left: 16px;
+	cursor: pointer;
+}
+
+#theme-icon {
+	filter: $invert-filter;
+	margin-bottom: -4px;
+}
+
 .navbar-content {
 	height: 100%;
 	margin: auto;
@@ -319,6 +335,7 @@ main {
 		-webkit-text-fill-color: transparent;
 		text-decoration: none;
 		transition: color 0.3s;
+		cursor: pointer;
 
 		&:hover {
 			background-position: top left 100%;
@@ -351,6 +368,7 @@ main {
 .logo {
 	aspect-ratio: 1;
 	height: 70%;
+	z-index: 1000;
 	border-radius: 50%;
 	filter: url(#noise);
 }

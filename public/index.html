@@ -25,13 +25,15 @@
 			<img class="logo" alt="Barrett Crusse logo" src="images/logo.jpg" />
 			<h1 class="system-font hide-background" id="navbar-name">Barrett Crusse</h1>
 			<nav class="hide-background">
-				<a href="#home">Home</a>
-				<a href="#about-me">About Me</a>
-				<a href="#skills">Skills</a>
-				<a href="#portfolio">Portfolio</a>
-				<a href="#contact">Contact</a>
+				<a onclick="scrollToElem('#home')">Home</a>
+				<a onclick="scrollToElem('#about-me')">About Me</a>
+				<a onclick="scrollToElem('#skills')">Skills</a>
+				<a onclick="scrollToElem('#portfolio')">Portfolio</a>
+				<a onclick="scrollToElem('#contact')">Contact</a>
 			</nav>
-			<button style="margin-left: 16px;" onclick="toggleTheme()">☀️</button>
+			<button id="theme-button" onclick="toggleTheme()">
+				<img id="theme-icon" />
+			</button>
 		</div>
 	</div>
 

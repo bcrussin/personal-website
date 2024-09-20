@@ -141,11 +141,14 @@ main a {
 .gradient-accent::after {
   content: "";
   position: absolute;
-  background-color: rgba(224, 224, 224, 0.6274509804);
+  background-color: var(--text-color);
+  opacity: 0.8;
   z-index: 90;
+  transition: background-color 0.3s;
 }
 .gradient-accent.glow::after {
-  filter: drop-shadow(0 0 4px rgba(224, 224, 224, 0.7529411765));
+  filter: drop-shadow(0 0 4px var(--text-color));
+  transition: filter 0.3s;
 }
 .gradient-accent.right::after {
   left: 100%;
@@ -260,6 +263,19 @@ main a {
   z-index: -1;
 }
 
+#theme-button {
+  border: none;
+  background: none;
+  z-index: 900;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+#theme-icon {
+  filter: var(--invert-filter);
+  margin-bottom: -4px;
+}
+
 .navbar-content {
   height: 100%;
   margin: auto;
@@ -286,6 +302,7 @@ main a {
   -webkit-text-fill-color: transparent;
   text-decoration: none;
   transition: color 0.3s;
+  cursor: pointer;
 }
 .navbar-content nav *:hover {
   background-position: top left 100%;
@@ -313,6 +330,7 @@ main a {
 .logo {
   aspect-ratio: 1;
   height: 70%;
+  z-index: 1000;
   border-radius: 50%;
   filter: url(#noise);
 }

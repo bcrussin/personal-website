@@ -8,6 +8,8 @@ const subtitle = document.getElementById("subtitle");
 const socialButtons = document.getElementById("social-buttons");
 const learnMore = document.getElementById("learn-more");
 
+const themeIcon = document.getElementById('theme-icon');
+
 const BACKGROUND = document.getElementById("background-canvas");
 const BACKGROUND_NAVBAR = document.getElementById("background-canvas-navbar");
 const BG = BACKGROUND.getContext("2d");
@@ -180,7 +182,18 @@ const END_FADE_OPACITY = 0;
 const START_BG_OPACITY = 0;
 const END_BG_OPACITY = 1;
 
+function scrollToElem(query) {
+	let elem = document.querySelector(query);
+	elem.scrollIntoView();
+}
+
 function fadeNavbarBackground() {
+	if (window.scrollY > SCROLL_Y_MAX) {
+		BACKGROUND_NAVBAR.style.opacity = END_FADE_OPACITY;
+		navbar.style.setProperty("--backdrop-filter-opacity", END_BG_OPACITY);
+		return;
+	}
+
 	let scroll = Math.min(window.scrollY, SCROLL_Y_MAX);
 	let dotsOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_FADE_OPACITY, END_FADE_OPACITY);
 	let bgOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_BG_OPACITY, END_BG_OPACITY);
@@ -203,26 +216,33 @@ addEventListener("scroll", (e) => {
 fadeNavbarBackground();
 
 /* _____ THEMING _____ */
+const DEFAULT_THEME = 'dark';
+const THEME_ICONS = {
+	'light': 'images/icons/sun.svg',
+	'dark': 'images/icons/moon.svg'
+}
+
 let themesData;
 fetch("storage/themes.json")
 	.then((res) => res.json())
 	.then((data) => {
 		themesData = data;
-		console.log(themesData)
-		applyTheme('dark')
+		let theme = localStorage.getItem('theme') ?? DEFAULT_THEME;
+		applyTheme(theme);
 	});
-
 
 let currentTheme;
 function applyTheme(theme) {
 	let themeData = themesData[theme];
 
 	Object.entries(themeData).forEach(([property, value]) => {
-		console.log(property, value)
 		document.documentElement.style.setProperty("--" + property, value);
 	});
 
+	themeIcon.src = THEME_ICONS?.[theme];
+
 	currentTheme = theme;
+	localStorage.setItem('theme', currentTheme);
 }
 
 function toggleTheme() {
@@ -361,7 +381,7 @@ function updateBackground() {
 				dot.size = fontSize;
 				dot.alpha = alpha;
 			} else {
-				let shrinkSpeed = 12;
+				let shrinkSpeed = useHoverEffect ? 2 : 12;
 				let growSpeed = 2;
 				
 				let speed;
