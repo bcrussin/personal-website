@@ -15,6 +15,9 @@ const BACKGROUND_NAVBAR = document.getElementById("background-canvas-navbar");
 const BG = BACKGROUND.getContext("2d");
 const BG_NAV = BACKGROUND_NAVBAR.getContext("2d");
 
+const BUFFER_CANVAS = document.createElement('canvas');
+const BUFFER = BUFFER_CANVAS.getContext('2d')
+
 const LIGHT_TEXT = "#e0e0e0";
 const DARK_TEXT = "#131313";
 
@@ -298,6 +301,9 @@ initBackground();
 requestAnimationFrame(updateBackground);
 
 function initBackground() {
+	BUFFER_CANVAS.width = 10;
+	BUFFER_CANVAS.height = 10;
+
 	dots = [];
 	for (let i = 0; i < BACKGROUND.width / gap; i++) {
 		dots.push([]);
@@ -313,7 +319,13 @@ function initBackground() {
 function updateBackground() {
 	let canvasWidth = BACKGROUND.width;
 	let canvasHeight = BACKGROUND.height;
-	BG.font = "18px serif";
+	
+	BUFFER.fillStyle = 'white';
+	BUFFER.beginPath();
+	BUFFER.arc(BUFFER_CANVAS.width / 2, BUFFER_CANVAS.height / 2, BUFFER_CANVAS.width / 2, 0, 2 * Math.PI);
+	BUFFER.fill();
+
+	// BG.font = "18px serif";
 
 	BG.clearRect(0, 0, canvasWidth, canvasHeight);
 
@@ -324,8 +336,8 @@ function updateBackground() {
 			let fadeDist = 0.3; // The radius at which dots reach full darkness
 			let brightnessUpperBound = 0.15; // The upper bound of the range mapped to normal brightness levels (basically max brightness ish)
 			let minBrightness = 0.2;
-			let baseFontSize = 18;
-			let fontScaleEffect = 60;
+			let baseDotSize = 5;
+			let fontScaleEffect = 16;
 			let mx = 0;
 			let my = 0;
 
@@ -346,7 +358,7 @@ function updateBackground() {
 			let finalX = x;
 			let finalY = y;
 
-			let fontSize = baseFontSize;
+			let dotSize = baseDotSize;
 
 			if (mouseX != undefined && mouseY != undefined) {
 				dx = x - mouseX;
@@ -370,7 +382,7 @@ function updateBackground() {
 				finalX = x + dx * finalDistance - mx;
 				finalY = y + dy * finalDistance - my;
 
-				fontSize = baseFontSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
+				dotSize = baseDotSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
 			}
 
 			let dot = dots[i][j];
@@ -378,14 +390,14 @@ function updateBackground() {
 			if (dot.x == undefined || dot.y == undefined) {
 				dot.x = finalX;
 				dot.y = finalY;
-				dot.size = fontSize;
+				dot.size = dotSize;
 				dot.alpha = alpha;
 			} else {
 				let shrinkSpeed = useHoverEffect ? 2 : 12;
 				let growSpeed = 2;
 				
 				let speed;
-				if (fontSize > dot.size) {
+				if (dotSize > dot.size) {
 					speed = growSpeed;
 				} else {
 					speed = shrinkSpeed;
@@ -393,7 +405,7 @@ function updateBackground() {
 
 				dot.x += (finalX - dot.x) / speed;
 				dot.y += (finalY - dot.y) / speed;
-				dot.size += (fontSize - dot.size) / speed;
+				dot.size += (dotSize - dot.size) / speed;
 				dot.alpha += (alpha - dot.alpha) / (speed / 2);
 			}
 
@@ -405,8 +417,10 @@ function updateBackground() {
 			// }
 
 			BG.font = `${dot.size}px serif`;
-			BG.fillStyle = `rgba(255, 255, 255, ${dot.alpha})`;
-			BG.fillText("•", dot.x - fontSize / 6, dot.y + fontSize / 6);
+			BG.fillStyle = `rgba(0, 0, 0, ${dot.alpha})`;
+			// BG.fillText("•", dot.x - dotSize / 6, dot.y + dotSize / 6);
+			BG.globalAlpha = dot.alpha;
+			BG.drawImage(BUFFER_CANVAS, dot.x - (dotSize / 2), dot.y - (dotSize / 2), dotSize, dotSize);
 		}
 	}
 
