@@ -226,7 +226,6 @@ main a {
   opacity: var(--backdrop-filter-opacity);
   background-color: var(--background-color);
   transition: background-color 0.3s;
-  backdrop-filter: blur(80px);
   pointer-events: none;
 }
 .navbar::after {
@@ -241,7 +240,6 @@ main a {
   background-color: var(--background-color);
   transition: background-color 0.3s;
   filter: blur(20px);
-  backdrop-filter: blur(80px);
 }
 
 #navbar-name {
@@ -311,20 +309,6 @@ main a {
 .hide-background {
   position: relative;
   --blur-filter: blur(20px);
-}
-.hide-background::before {
-  content: "";
-  position: absolute;
-  left: -32px;
-  top: -32px;
-  right: -32px;
-  bottom: -32px;
-  opacity: 0.9;
-  filter: blur(20px);
-  -webkit-backdrop-filter: var(--blur-filter);
-  backdrop-filter: var(--blur-filter);
-  z-index: -1;
-  pointer-events: none;
 }
 
 .logo {

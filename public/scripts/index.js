@@ -314,6 +314,7 @@ function initBackground() {
 
 	mouseX = null;
 	mouseY = null;
+	requestAnimationFrame(updateBackground);
 }
 
 function updateBackground() {
@@ -434,7 +435,7 @@ function updateBackground() {
 		hoverEffectTimer += (0 - hoverEffectTimer) / HOVER_EFFECT_DURATION;
 	}
 
-	requestAnimationFrame(updateBackground);
+	// requestAnimationFrame(updateBackground);
 }
 
 function scaleToHover(value, div, min, max) {
