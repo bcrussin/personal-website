@@ -361,30 +361,30 @@ function updateBackground() {
 
 			let dotSize = baseDotSize;
 
-			if (mouseX != undefined && mouseY != undefined) {
-				dx = x - mouseX;
-				dy = y - mouseY;
+			// if (mouseX != undefined && mouseY != undefined) {
+			// 	dx = x - mouseX;
+			// 	dy = y - mouseY;
 
-				let distance = Math.hypot(dx, dy) / circleSize;
+			// 	let distance = Math.hypot(dx, dy) / circleSize;
 
-				bulgeEffect += (bulgeEffect * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
-				fadeDist += (fadeDist * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 1.4;
+			// 	bulgeEffect += (bulgeEffect * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 8;
+			// 	fadeDist += (fadeDist * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH)) / 1.4;
 
-				clampedDistance = Math.min(distance, bulgeEffect);
-				clampedDistance = bulgeEffect - clampedDistance;
+			// 	clampedDistance = Math.min(distance, bulgeEffect);
+			// 	clampedDistance = bulgeEffect - clampedDistance;
 
-				alpha = Math.max(mapToRange(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
-				alpha = Math.min(alpha, yChange);
+			// 	alpha = Math.max(mapToRange(fadeDist - distance, 0, brightnessUpperBound, 0, 1), minBrightness);
+			// 	alpha = Math.min(alpha, yChange);
 
-				finalDistance =
-					clampedDistance +
-					clampedDistance * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
+			// 	finalDistance =
+			// 		clampedDistance +
+			// 		clampedDistance * mapToRange(hoverEffectTimer, 0, HOVER_EFFECT_DURATION, 0, HOVER_EFFECT_STRENGTH);
 
-				finalX = x + dx * finalDistance - mx;
-				finalY = y + dy * finalDistance - my;
+			// 	finalX = x + dx * finalDistance - mx;
+			// 	finalY = y + dy * finalDistance - my;
 
-				dotSize = baseDotSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
-			}
+			// 	dotSize = baseDotSize + scaleToHover(clampedDistance * fontScaleEffect, 0.8);
+			// }
 
 			let dot = dots[i][j];
 
