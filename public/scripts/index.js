@@ -53,11 +53,6 @@ window.onload = () => {
 };
 
 function calculateHeaderSize() {
-	if (window.outerHeight == windowHeight) {
-		return;
-	}
-	windowHeight = window.outerHeight;
-
 	let height = Math.min(window.innerHeight - navbar.clientHeight, 1200);
 	document.getElementById("home").style.minHeight = height + "px";
 }

@@ -354,6 +354,10 @@ html * {
   scroll-margin-top: 96px;
 }
 
+a {
+  cursor: pointer;
+}
+
 .background-canvas {
   position: fixed;
   left: 0;
@@ -554,11 +558,12 @@ main a {
   position: absolute;
   top: -20px;
   right: 0;
-  bottom: 12px;
+  bottom: 0;
   left: 0;
   opacity: var(--backdrop-filter-opacity);
   background-color: var(--background-color);
   transition: background-color 0.3s;
+  filter: blur(20px);
 }
 
 #navbar-name {

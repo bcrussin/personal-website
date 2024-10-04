@@ -26,6 +26,10 @@ html {
 	}
 }
 
+a {
+	cursor: pointer;
+}
+
 .background-canvas {
 	position: fixed;
 	left: 0;
@@ -258,12 +262,13 @@ main {
 		position: absolute;
 		top: -20px;
 		right: 0;
-		bottom: 12px;
+		bottom: 0;
 		left: 0;
 
 		opacity: var(--backdrop-filter-opacity);
 		background-color: $background-color;
 		transition: background-color $theme-transition-duration;
+		filter: blur($navbar-blur);
 	}
 }
 
