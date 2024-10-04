@@ -1,4 +1,4 @@
-$theme-transition-duration: 0.3s;
+$theme-transition-duration: var(--theme-transition-duration); // Set using Javascript
 
 $max-content-width: 1600px;
 

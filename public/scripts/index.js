@@ -227,6 +227,8 @@ fetch("storage/themes.json")
 		themesData = data;
 		let theme = localStorage.getItem('theme') ?? DEFAULT_THEME;
 		applyTheme(theme);
+
+		setTimeout(() => document.documentElement.style.setProperty("--theme-transition-duration", '0.2s'), 50);
 	});
 
 let currentTheme;

@@ -72,7 +72,7 @@
   border-radius: 24px;
   background-color: var(--background-color);
   filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843));
-  transition: background-color 0.3s;
+  transition: background-color var(--theme-transition-duration);
 }
 .about-me-row div {
   z-index: 10;
@@ -141,7 +141,7 @@
   border-radius: 12px;
   box-sizing: border-box;
   overflow: hidden;
-  transition: border 0.3s, background-color 0.3s;
+  transition: border var(--theme-transition-duration), background-color var(--theme-transition-duration);
 }
 .portfolio-item img {
   width: 100%;
@@ -347,7 +347,7 @@ html {
   background-color: var(--background-color);
   background-attachment: fixed;
   font-family: "Geologica", sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color var(--theme-transition-duration), color var(--theme-transition-duration);
 }
 body *,
 html * {
@@ -406,7 +406,7 @@ main a {
   z-index: 100;
   background-color: var(--background-color);
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3764705882);
-  transition: background-color 0.3s;
+  transition: background-color var(--theme-transition-duration);
 }
 
 .system-font {
@@ -468,11 +468,11 @@ main a {
   background-color: var(--text-color);
   opacity: 0.8;
   z-index: 90;
-  transition: background-color 0.3s;
+  transition: background-color var(--theme-transition-duration);
 }
 .gradient-accent.glow::after {
   filter: drop-shadow(0 0 4px var(--text-color));
-  transition: filter 0.3s;
+  transition: filter var(--theme-transition-duration);
 }
 .gradient-accent.right::after {
   left: 100%;
@@ -550,7 +550,7 @@ main a {
   left: 0;
   opacity: var(--backdrop-filter-opacity);
   background-color: var(--background-color);
-  transition: background-color 0.3s;
+  transition: background-color var(--theme-transition-duration);
 }
 .navbar::after {
   content: "";
@@ -562,14 +562,14 @@ main a {
   left: 0;
   opacity: var(--backdrop-filter-opacity);
   background-color: var(--background-color);
-  transition: background-color 0.3s;
+  transition: background-color var(--theme-transition-duration);
   filter: blur(20px);
 }
 
 #navbar-name {
   position: relative;
   color: var(--text-color);
-  transition: color 0.3s;
+  transition: color var(--theme-transition-duration);
   z-index: 900;
 }
 #navbar-name::after {
@@ -623,7 +623,7 @@ main a {
   background-size: 300% 100%;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--theme-transition-duration);
   cursor: pointer;
 }
 .navbar-content nav *:hover {
@@ -695,7 +695,7 @@ main a {
   color: var(--text-color);
   text-decoration: none;
   opacity: 0.7;
-  transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color 0.3s;
+  transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color var(--theme-transition-duration);
   margin: 0 16px;
 }
 #social-buttons a:hover,
@@ -714,7 +714,7 @@ main a {
   color: var(--text-color);
   text-decoration: none;
   opacity: 0.7;
-  transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color 0.3s;
+  transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color var(--theme-transition-duration);
   margin: 0 16px;
   cursor: pointer;
 }
