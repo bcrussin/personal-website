@@ -537,7 +537,7 @@ main a {
   right: 0;
   margin: 0;
   padding: 0 20px;
-  padding-bottom: 20px;
+  padding-bottom: 8px;
 }
 .navbar::before {
   content: "";
@@ -563,7 +563,7 @@ main a {
   opacity: var(--backdrop-filter-opacity);
   background-color: var(--background-color);
   transition: background-color var(--theme-transition-duration);
-  filter: blur(20px);
+  filter: blur(8px);
 }
 
 #navbar-name {
