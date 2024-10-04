@@ -49,7 +49,7 @@
         "title": "Personal Website",
         "image": "images/portfolio/personal-website.png",
         "description": [
-            "The website you're viewing right now. Written using pure HTML, SCSS, and Javascript."
+            "The website you're viewing right now. Written using pure HTML, SCSS, and Javascript. Hosted using <a href='https://firebase.google.com/'>Firebase</a>."
         ],
         "links": [
             {

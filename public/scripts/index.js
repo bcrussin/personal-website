@@ -277,7 +277,7 @@ function handleHoverEffects(e) {
 addEventListener("resize", () => {
 	resizeCanvas();
 
-	calculateHeaderSize();
+	// calculateHeaderSize();
 	initBackground();
 });
 
