@@ -41,8 +41,12 @@
 		margin-top: 4px;
 	}
 
-	.social-button:hover~.social-name {
-		text-decoration: underline;
+	.social-button:hover {
+		transform: none !important;
+
+		&~.social-name {
+			text-decoration: underline;
+		}
 	}
 }
 

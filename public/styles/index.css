@@ -314,6 +314,9 @@
   opacity: 0.6;
   margin-top: 4px;
 }
+.social .social-button:hover {
+  transform: none !important;
+}
 .social .social-button:hover ~ .social-name {
   text-decoration: underline;
 }
@@ -720,15 +723,16 @@ main a {
 }
 
 .social-button, .social-button:link, .social-button:hover, .social-button:visited, .social-button:active {
-  color: var(--text-color) !important;
+  color: var(--text-color);
   text-decoration: none;
   opacity: 0.7;
-  transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color var(--theme-transition-duration);
+  transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), filter 0.25s, transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color var(--theme-transition-duration);
   margin: 0 16px;
-  cursor: pointer;
 }
 .social-button:hover, .social-button:link:hover, .social-button:hover:hover, .social-button:visited:hover, .social-button:active:hover {
   opacity: 1;
+  filter: drop-shadow(0 0 8px var(--text-color-fade));
+  transform: scale(1.15);
 }
 .social-button i {
   font-size: 36pt;
