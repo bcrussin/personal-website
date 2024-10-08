@@ -39,8 +39,12 @@
           <a tabindex="0" onclick="scrollToElem('#portfolio')">Portfolio</a>
           <a tabindex="0" onclick="scrollToElem('#contact')">Contact</a>
         </nav>
-        <button id="theme-button" onclick="toggleTheme()">
-          <img id="theme-icon" />
+        <button
+          id="theme-button"
+          aria-label="Theme toggle"
+          onclick="toggleTheme()"
+        >
+          <img id="theme-icon" alt="Theme toggle" />
         </button>
       </div>
     </div>
