@@ -460,6 +460,9 @@ main a {
 .gradient.grow:hover {
   transform: scale(1.04);
 }
+.gradient.glow {
+  text-shadow: 0 0 12px rgba(230, 74, 63, 0.6274509804) !important;
+}
 
 .gradient-underline {
   position: relative;

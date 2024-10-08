@@ -135,6 +135,10 @@ main {
   &.grow:hover {
     transform: scale(1.04);
   }
+
+  &.glow {
+    text-shadow: 0 0 12px #e64a3fa0 !important;
+  }
 }
 
 .gradient-underline {
