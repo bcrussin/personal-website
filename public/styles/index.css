@@ -6,6 +6,7 @@
 #about-me p {
   width: auto;
   max-width: 600px;
+  height: -moz-fit-content;
   height: fit-content;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -20,7 +21,8 @@
   height: auto;
   min-height: 0;
   max-height: 240px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5019607843);
 }
 #about-me .row-right,
@@ -65,6 +67,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: -moz-fit-content;
   width: fit-content;
   max-width: 100%;
   margin: 32px 0;
@@ -120,6 +123,7 @@
   }
 }
 #portfolio h1 {
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -148,6 +152,7 @@
 }
 .portfolio-item h2 {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
   margin-bottom: 8px;
 }
@@ -274,6 +279,7 @@
 }
 .email-container, .socials-container {
   display: flex;
+  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
   overflow: visible;
@@ -354,6 +360,13 @@ html * {
   scroll-margin-top: 96px;
 }
 
+body {
+  background: var(--background-color);
+  background-image: radial-gradient(var(--border-color) 2px, transparent 0);
+  background-size: 20px 20px;
+  background-position: -19px -19px;
+}
+
 a {
   cursor: pointer;
 }
@@ -370,15 +383,21 @@ a {
 }
 
 #background-canvas {
-  clip-path: rect(80px 0 100% 100%);
+  -webkit-clip-path: rect(80px 0 100% 100%);
+          clip-path: rect(80px 0 100% 100%);
 }
 
 #background-canvas-navbar {
-  clip-path: rect(0 0 80px 100%);
+  -webkit-clip-path: rect(0 0 80px 100%);
+          clip-path: rect(0 0 80px 100%);
   z-index: 500;
   opacity: 0.4;
 }
 
+main {
+  overflow-y: scroll;
+  max-height: 100vh;
+}
 main a {
   color: #367bf5;
 }
@@ -427,9 +446,11 @@ main a {
 }
 
 .gradient {
+  width: -moz-fit-content;
   width: fit-content;
   background-image: linear-gradient(100deg, #d62b39, #e23745 30%, #e64a3f 60%, #e45147 100%);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   cursor: default;
   font-weight: 700;
   text-shadow: none !important;
@@ -445,6 +466,7 @@ main a {
 
 .gradient-underline {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .gradient-underline::after {
@@ -459,7 +481,9 @@ main a {
 
 .gradient-accent {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
+  height: -moz-fit-content;
   height: fit-content;
 }
 .gradient-accent::after {
@@ -617,9 +641,11 @@ main a {
 .navbar-content nav * {
   margin-left: 12px;
   color: var(--text-color) !important;
+  width: -moz-fit-content;
   width: fit-content;
   background: linear-gradient(100deg, var(--text-color), var(--text-color) 33%, #bd1321, #e23745, #e64a3f, #e66146);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   background-size: 300% 100%;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
@@ -649,6 +675,7 @@ main a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: -moz-fit-content;
   width: fit-content;
   min-height: min(100vh - 80px, 1200px);
 }
@@ -801,6 +828,7 @@ main a {
 .skill > span {
   margin-top: 8px;
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .skill > span::after {
@@ -827,4 +855,4 @@ main a {
   .subtitle {
     font-size: 14pt;
   }
-}
+}/*# sourceMappingURL=index.css.map */

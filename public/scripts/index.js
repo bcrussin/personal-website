@@ -8,6 +8,8 @@ const subtitle = document.getElementById("subtitle");
 const socialButtons = document.getElementById("social-buttons");
 const learnMore = document.getElementById("learn-more");
 
+const mainSection = document.getElementById("main-content");
+
 const themeIcon = document.getElementById('theme-icon');
 
 const BACKGROUND = document.getElementById("background-canvas");
@@ -182,17 +184,20 @@ const END_BG_OPACITY = 1;
 
 function scrollToElem(query) {
 	let elem = document.querySelector(query);
-	elem.scrollIntoView();
+	mainSection.scrollTo({
+		top: elem.getBoundingClientRect().top + mainSection.scrollTop - navbar.clientHeight,
+		behavior: 'smooth'
+	});
 }
 
 function fadeNavbarBackground() {
-	if (window.scrollY > SCROLL_Y_MAX) {
+	if (mainSection.scrollTop > SCROLL_Y_MAX) {
 		BACKGROUND_NAVBAR.style.opacity = END_FADE_OPACITY;
 		navbar.style.setProperty("--backdrop-filter-opacity", END_BG_OPACITY);
 		return;
 	}
 
-	let scroll = Math.min(window.scrollY, SCROLL_Y_MAX);
+	let scroll = Math.min(mainSection.scrollTop, SCROLL_Y_MAX);
 	let dotsOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_FADE_OPACITY, END_FADE_OPACITY);
 	let bgOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_BG_OPACITY, END_BG_OPACITY);
 
@@ -208,7 +213,7 @@ function fadeNavbarBackground() {
 	// navbar.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
 }
 
-addEventListener("scroll", (e) => {
+mainSection.addEventListener("scroll", (e) => {
 	fadeNavbarBackground();
 });
 fadeNavbarBackground();
@@ -280,7 +285,7 @@ addEventListener("resize", () => {
 	resizeCanvas();
 
 	// calculateHeaderSize();
-	initBackground();
+	// initBackground();
 });
 
 resizeCanvas();
@@ -294,8 +299,7 @@ function resizeCanvas() {
 
 let dots = [];
 
-initBackground();
-requestAnimationFrame(updateBackground);
+// initBackground();
 
 function initBackground() {
 	BUFFER_CANVAS.width = 10;
@@ -317,7 +321,7 @@ function initBackground() {
 function updateBackground() {
 	let canvasWidth = BACKGROUND.width;
 	let canvasHeight = BACKGROUND.height;
-	
+
 	BUFFER.fillStyle = 'white';
 	BUFFER.beginPath();
 	BUFFER.arc(BUFFER_CANVAS.width / 2, BUFFER_CANVAS.height / 2, BUFFER_CANVAS.width / 2, 0, 2 * Math.PI);
@@ -393,7 +397,7 @@ function updateBackground() {
 			} else {
 				let shrinkSpeed = useHoverEffect ? 2 : 12;
 				let growSpeed = 2;
-				
+
 				let speed;
 				if (dotSize > dot.size) {
 					speed = growSpeed;
@@ -460,13 +464,13 @@ window.onload = () => {
 
 function loadTitleName() {
     titleName.innerHTML = '';
-    
+
     [...NAME].forEach((c, i) => {
         let elem = document.createElement('span');
         elem.innerHTML = c;
         console.log(c)
 
-        if (c === ' ') 
+        if (c === ' ')
             elem.classList.add('space');
 
         titleName.appendChild(elem);

@@ -1,6 +1,7 @@
 {
     "light": {
         "background-color": "#eeeeee",
+        "background-color-fade": "#eeeeee40",
         "text-color": "#222222",
         "border-color": "#00000020",
         "navbar-backdrop-brightness": 1,
@@ -10,6 +11,7 @@
 
     "dark": {
         "background-color": "#101010",
+        "background-color-fade": "#10101040",
         "text-color": "#dddddd",
         "border-color": "#ffffff20",
         "navbar-backdrop-brightness": 0.4,
