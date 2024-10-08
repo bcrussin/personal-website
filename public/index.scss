@@ -444,28 +444,6 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
-
-  a,
-  a:link,
-  a:hover,
-  a:visited,
-  a:active {
-    color: $text-color;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.25s $super-ease-in-out,
-      transform 0.8s $super-ease-in-out, color $theme-transition-duration;
-    margin: 0 16px;
-
-    &:hover {
-      opacity: 1;
-      transform: scale(1.15);
-    }
-  }
-
-  i {
-    font-size: $social-button-size;
-  }
 }
 
 .social-button {
@@ -475,7 +453,7 @@ main {
   &:hover,
   &:visited,
   &:active {
-    color: $text-color;
+    color: $text-color !important;
     text-decoration: none;
     opacity: 0.7;
     transition: opacity 0.25s $super-ease-in-out,

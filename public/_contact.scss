@@ -1,6 +1,7 @@
 @import "_variables.scss";
 
-.email-container, .socials-container {
+.email-container,
+.socials-container {
 	display: flex;
 
 	width: fit-content;
@@ -39,6 +40,10 @@
 		opacity: 0.6;
 		margin-top: 4px;
 	}
+
+	.social-button:hover~.social-name {
+		text-decoration: underline;
+	}
 }
 
 .email,
@@ -47,7 +52,7 @@
 	margin-right: 2px;
 
 	cursor: pointer;
-    font-weight: 400;
+	font-weight: 400;
 	text-align: center;
 	text-decoration: none;
 
@@ -61,10 +66,10 @@
 .source-link {
 	color: $text-color;
 	opacity: 0.6;
-	
+
 	font-size: smaller;
 	font-family: monospace;
-	
+
 	transition: opacity 0.3s $super-ease-in-out;
 
 	&:hover {

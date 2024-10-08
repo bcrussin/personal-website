@@ -277,7 +277,8 @@
     display: none;
   }
 }
-.email-container, .socials-container {
+.email-container,
+.socials-container {
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
@@ -312,6 +313,9 @@
 .social .social-name {
   opacity: 0.6;
   margin-top: 4px;
+}
+.social .social-button:hover ~ .social-name {
+  text-decoration: underline;
 }
 
 .email,
@@ -714,31 +718,9 @@ main a {
   align-items: center;
   width: 100%;
 }
-#social-buttons a,
-#social-buttons a:link,
-#social-buttons a:hover,
-#social-buttons a:visited,
-#social-buttons a:active {
-  color: var(--text-color);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color var(--theme-transition-duration);
-  margin: 0 16px;
-}
-#social-buttons a:hover,
-#social-buttons a:link:hover,
-#social-buttons a:hover:hover,
-#social-buttons a:visited:hover,
-#social-buttons a:active:hover {
-  opacity: 1;
-  transform: scale(1.15);
-}
-#social-buttons i {
-  font-size: 36pt;
-}
 
 .social-button, .social-button:link, .social-button:hover, .social-button:visited, .social-button:active {
-  color: var(--text-color);
+  color: var(--text-color) !important;
   text-decoration: none;
   opacity: 0.7;
   transition: opacity 0.25s cubic-bezier(0.1, 0.5, 0.15, 0.8), transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8), color var(--theme-transition-duration);
