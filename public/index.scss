@@ -205,8 +205,8 @@ main {
   transition: border 0.5s $super-ease-in-out;
 
   &:hover {
-    border: 2px solid #e23745;
-    filter: drop-shadow(0 0 4px $accent-fade);
+    border: 2px solid #e23745 !important;
+    filter: drop-shadow(0 0 4px $accent-fade) !important;
   }
 }
 
