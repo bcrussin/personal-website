@@ -19,7 +19,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="styles/index-min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    <link rel="preload" href="images/icons/close.svg" />
   </head>
 
   <body>
@@ -29,23 +30,31 @@
       <canvas id="background-canvas-navbar" class="background-canvas"></canvas>
       <div class="navbar-content">
         <img class="logo" alt="Barrett Crusse logo" src="images/logo.jpg" />
-        <h1 class="system-font hide-background" id="navbar-name">
-          Barrett Crusse
-        </h1>
-        <nav class="hide-background">
+        <h1 class="system-font" id="navbar-name">Barrett Crusse</h1>
+        <nav id="nav-container">
           <a tabindex="0" onclick="scrollToElem('#home')">Home</a>
           <a tabindex="0" onclick="scrollToElem('#about-me')">About Me</a>
           <a tabindex="0" onclick="scrollToElem('#skills')">Skills</a>
           <a tabindex="0" onclick="scrollToElem('#portfolio')">Portfolio</a>
           <a tabindex="0" onclick="scrollToElem('#contact')">Contact</a>
         </nav>
-        <button
-          id="theme-button"
-          aria-label="Theme toggle"
-          onclick="toggleTheme()"
-        >
-          <img id="theme-icon" alt="Theme toggle" />
-        </button>
+
+        <div class="navbar-buttons">
+          <button
+            id="theme-button"
+            aria-label="Theme toggle"
+            onclick="toggleTheme()"
+          >
+            <img id="theme-icon" />
+          </button>
+          <button
+            id="nav-menu-button"
+            aria-label="Navigation menu"
+            onclick="toggleNavMenu()"
+          >
+            <img id="nav-menu-icon" />
+          </button>
+        </div>
       </div>
     </div>
 

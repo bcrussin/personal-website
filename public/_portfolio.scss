@@ -88,6 +88,11 @@
 				transition: all 0.4s $super-ease-out;
 			}
 
+			li a.primary,
+			li:has(.primary)::before {
+				color: $accent;
+			}
+
 			li a {
 				height: 100%;
 				font-size: 16pt;

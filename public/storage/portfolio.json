@@ -8,8 +8,9 @@
         ],
         "links": [
             {
-                "label": "Website",
-                "href": "https://bcrussin.github.io/js-markdown-editor/"
+                "label": "Visit",
+                "href": "https://bcrussin.github.io/js-markdown-editor/",
+                "primary": true
             },
             {
                 "label": "Github",
@@ -24,25 +25,27 @@
         ]
     },
     {
-        "title": "Javascript Games",
-        "image": "images/portfolio/js-games.png",
+        "title": "JMU Dining Options",
+        "image": "images/portfolio/jmu-dining-options.png",
         "description": [
-            "This is a collection of games written in pure Javascript, including Tetris, Pong, Snake, and Tron"
+            "This website was created for a class project. It provides quick access to the various dining options at James Madison University, and shows at a glance which locations are open and closed.",
+            "<code>localStorage</code> is used to track pinned restaurants, and restaurants can be filtered by location, payment option, search term, and more."
         ],
         "links": [
             {
-                "label": "Website",
-                "href": "https://bcrussin.github.io/js-games/"
+                "label": "Visit",
+                "href": "https://bcrussin.github.io/jmu-dining-options/",
+                "primary": true
             },
             {
                 "label": "Github",
-                "href": "https://github.com/bcrussin/js-games"
+                "href": "https://github.com/bcrussin/jmu-dining-options"
             }
         ],
         "tags": [
             "HTML/CSS",
             "JavaScript",
-            "Game Development"
+            "localStorage"
         ]
     },
     {
@@ -61,6 +64,29 @@
             "HTML/CSS",
             "SCSS",
             "JavaScript"
+        ]
+    },
+    {
+        "title": "Javascript Games",
+        "image": "images/portfolio/js-games.png",
+        "description": [
+            "This is a collection of games written in pure Javascript, including Tetris, Pong, Snake, and Tron"
+        ],
+        "links": [
+            {
+                "label": "Visit",
+                "href": "https://bcrussin.github.io/js-games/",
+                "primary": true
+            },
+            {
+                "label": "Github",
+                "href": "https://github.com/bcrussin/js-games"
+            }
+        ],
+        "tags": [
+            "HTML/CSS",
+            "JavaScript",
+            "Game Development"
         ]
     }
 ]

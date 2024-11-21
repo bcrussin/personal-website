@@ -94,8 +94,8 @@
   }
   .about-me-row {
     flex-direction: column;
-    margin: 24px 0;
-    padding: 0;
+    margin: 0;
+    padding: 16px 8px;
     border: 0;
     border-radius: 24px;
     filter: none;
@@ -202,6 +202,10 @@
   opacity: 0.6;
   padding-bottom: 4px;
   transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+#portfolio-container .portfolio-item .portfolio-summary .portfolio-links li a.primary,
+#portfolio-container .portfolio-item .portfolio-summary .portfolio-links li:has(.primary)::before {
+  color: #e23745;
 }
 #portfolio-container .portfolio-item .portfolio-summary .portfolio-links li a {
   height: 100%;
@@ -599,6 +603,7 @@ main a {
 
 #navbar-name {
   position: relative;
+  text-wrap: nowrap;
   color: var(--text-color);
   transition: color var(--theme-transition-duration);
   z-index: 900;
@@ -614,19 +619,6 @@ main a {
   background: rgba(230, 74, 63, 0.3764705882);
   box-shadow: 0 0 12px rgba(230, 74, 63, 0.6274509804);
   z-index: -1;
-}
-
-#theme-button {
-  border: none;
-  background: none;
-  z-index: 900;
-  margin-left: 16px;
-  cursor: pointer;
-}
-
-#theme-icon {
-  filter: var(--invert-filter);
-  margin-bottom: -4px;
 }
 
 .navbar-content {
@@ -662,10 +654,23 @@ main a {
 .navbar-content nav *:hover {
   background-position: top left 100%;
 }
+.navbar-content .navbar-buttons {
+  display: flex;
+}
+.navbar-content .navbar-buttons button {
+  border: none;
+  background: none;
+  z-index: 1000;
+  margin-left: 16px;
+  cursor: pointer;
+}
+.navbar-content .navbar-buttons button img {
+  filter: var(--invert-filter);
+  margin-bottom: -4px;
+}
 
-.hide-background {
-  position: relative;
-  --blur-filter: blur(20px);
+#nav-menu-button {
+  display: none;
 }
 
 .logo {
@@ -673,7 +678,6 @@ main a {
   height: 70%;
   z-index: 1000;
   border-radius: 50%;
-  filter: url(#noise);
 }
 
 .header {
@@ -831,7 +835,48 @@ main a {
   width: 100%;
 }
 
+.spin {
+  animation: 0.5s ease-in-out 0 spin 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @media only screen and (max-width: 650px) {
+  #nav-container {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: x-large;
+    background-color: var(--background-color);
+    opacity: 0;
+    transition: right 0.3s, visibility 0.3s, opacity 0.3s, background-color var(--theme-transition-duration);
+  }
+  #nav-container.open {
+    visibility: visible;
+    opacity: 1;
+    right: 0;
+  }
+  .navbar-buttons {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+  #nav-menu-button {
+    display: block;
+  }
   #navbar-name {
     display: none;
   }

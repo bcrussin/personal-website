@@ -1,16 +1,19 @@
 const FADE_TIMER = 250;
 const FADE_DELAY = 300;
 
-const navbar = document.getElementById("navbar");
-const navbarBlurs = document.querySelectorAll(".navbar .hide-background");
-const title = document.getElementById("title");
-const subtitle = document.getElementById("subtitle");
-const socialButtons = document.getElementById("social-buttons");
-const learnMore = document.getElementById("learn-more");
+const NAVBAR = document.getElementById("navbar");
+const NAVBAR_BLURS = document.querySelectorAll(".navbar .hide-background");
+const TITLE = document.getElementById("title");
+const SUBTITLE = document.getElementById("subtitle");
+const SOCIAL_BUTTONS = document.getElementById("social-buttons");
+const LEARN_MORE = document.getElementById("learn-more");
 
-const mainSection = document.getElementById("main-content");
+const MAIN_SECTION = document.getElementById("main-content");
 
-const themeIcon = document.getElementById('theme-icon');
+const NAV_MENU = document.getElementById("nav-container");
+const NAV_MENU_ICON = document.getElementById("nav-menu-icon");
+
+const THEME_ICON = document.getElementById('theme-icon');
 
 const BACKGROUND = document.getElementById("background-canvas");
 const BACKGROUND_NAVBAR = document.getElementById("background-canvas-navbar");
@@ -44,6 +47,7 @@ let tagsData;
 startFaded();
 window.onload = () => {
 	calculateHeaderSize();
+	toggleNavMenu(false);
 
 	fadeIn();
 	fetch("storage/tags.json")
@@ -55,12 +59,12 @@ window.onload = () => {
 };
 
 function calculateHeaderSize() {
-	let height = Math.min(window.innerHeight - navbar.clientHeight, 1200);
+	let height = Math.min(window.innerHeight - NAVBAR.clientHeight, 1200);
 	document.getElementById("home").style.minHeight = height + "px";
 }
 
 function startFaded() {
-	fadeQueue = [title, subtitle, socialButtons, learnMore];
+	fadeQueue = [TITLE, SUBTITLE, SOCIAL_BUTTONS, LEARN_MORE];
 	for (elem of fadeQueue) {
 		elem.classList.add("transparent");
 	}
@@ -148,6 +152,10 @@ function populatePortfolio() {
 			a.innerHTML = link.label;
 			a.href = link.href;
 			a.target = "_blank";
+
+			if (!!link?.primary)
+				a.classList.add("primary");
+
 			li.appendChild(a);
 			linksList.appendChild(li);
 		}
@@ -183,37 +191,39 @@ const START_BG_OPACITY = 0;
 const END_BG_OPACITY = 1;
 
 function scrollToElem(query) {
+	this.toggleNavMenu(false);
+
 	let elem = document.querySelector(query);
-	mainSection.scrollTo({
-		top: elem.getBoundingClientRect().top + mainSection.scrollTop - navbar.clientHeight,
+	MAIN_SECTION.scrollTo({
+		top: elem.getBoundingClientRect().top + MAIN_SECTION.scrollTop - NAVBAR.clientHeight,
 		behavior: 'smooth'
 	});
 }
 
 function fadeNavbarBackground() {
-	if (mainSection.scrollTop > SCROLL_Y_MAX) {
+	if (MAIN_SECTION.scrollTop > SCROLL_Y_MAX) {
 		BACKGROUND_NAVBAR.style.opacity = END_FADE_OPACITY;
-		navbar.style.setProperty("--backdrop-filter-opacity", END_BG_OPACITY);
+		NAVBAR.style.setProperty("--backdrop-filter-opacity", END_BG_OPACITY);
 		return;
 	}
 
-	let scroll = Math.min(mainSection.scrollTop, SCROLL_Y_MAX);
+	let scroll = Math.min(MAIN_SECTION.scrollTop, SCROLL_Y_MAX);
 	let dotsOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_FADE_OPACITY, END_FADE_OPACITY);
 	let bgOpacity = mapToRange(scroll, 0, SCROLL_Y_MAX, START_BG_OPACITY, END_BG_OPACITY);
 
 	BACKGROUND_NAVBAR.style.opacity = dotsOpacity;
 	// let filter = `brightness(${bgOpacity}) blur(10px)`;
-	// navbar.style.backdropFilter = filter;
-	navbar.style.setProperty("--backdrop-filter-opacity", bgOpacity);
+	// NAVBAR.style.backdropFilter = filter;
+	NAVBAR.style.setProperty("--backdrop-filter-opacity", bgOpacity);
 
-	// for (let elem of navbarBlurs) {
+	// for (let elem of NAVBAR_BLURS) {
 	// 	elem.style.setProperty('--backdrop-filter', `brightness(${bgOpacity}) blur(20px)`);
 	// }
 
-	// navbar.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
+	// NAVBAR.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
 }
 
-mainSection.addEventListener("scroll", (e) => {
+MAIN_SECTION.addEventListener("scroll", (e) => {
 	fadeNavbarBackground();
 });
 fadeNavbarBackground();
@@ -223,6 +233,11 @@ const DEFAULT_THEME = 'dark';
 const THEME_ICONS = {
 	'light': 'images/icons/sun.svg',
 	'dark': 'images/icons/moon.svg'
+}
+
+const NAV_MENU_ICONS = {
+	'open': 'images/icons/close.svg',
+	'closed': 'images/icons/menu.svg'
 }
 
 let themesData;
@@ -244,7 +259,7 @@ function applyTheme(theme) {
 		document.documentElement.style.setProperty("--" + property, value);
 	});
 
-	themeIcon.src = THEME_ICONS?.[theme];
+	THEME_ICON.src = THEME_ICONS?.[theme];
 
 	currentTheme = theme;
 	localStorage.setItem('theme', currentTheme);
@@ -254,6 +269,38 @@ function toggleTheme() {
 	let newTheme = currentTheme == 'dark' ? 'light' : 'dark';
 
 	applyTheme(newTheme)
+}
+
+function toggleNavMenu(state) {
+	const duration = 200;
+	let icon;
+
+	switch (state) {
+		case true:
+			NAV_MENU.classList.add("open");
+			icon = NAV_MENU_ICONS.open;
+			break;
+		case false:
+			NAV_MENU.classList.remove("open");
+			icon = NAV_MENU_ICONS.closed;
+			break;
+		default:
+			NAV_MENU.classList.toggle("open");
+			let iconName = NAV_MENU.classList.contains("open") ? "open" : "closed";
+			icon = NAV_MENU_ICONS[iconName];
+	}
+
+	NAV_MENU_ICON.animate(
+		[
+			{ transform: 'rotateX(0)' },
+			{ transform: 'rotateX(180deg)' }
+		], {
+			duration: duration,
+			iterations: 1,
+		}
+	);
+
+	setTimeout(() => NAV_MENU_ICON.src = icon, duration / 2)
 }
 
 /* _____ DYNAMIC BACKGROUND _____ */

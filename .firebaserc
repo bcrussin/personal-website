@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "barrett-crusse-website"
-  }
+    "default": "barrett-crusse-website",
+    "production": "barrett-crusse"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
