@@ -254,23 +254,23 @@ main {
   padding: 0 20px;
   padding-bottom: $navbar-blur;
 
+  // &::before {
+  //   content: "";
+  //   z-index: -1;
+  //   pointer-events: none;
+
+  //   position: absolute;
+  //   top: -20px;
+  //   right: 0;
+  //   bottom: 50%;
+  //   left: 0;
+
+  //   opacity: var(--backdrop-filter-opacity);
+  //   background-color: $background-color;
+  //   transition: background-color $theme-transition-duration;
+  // }
+
   &::before {
-    content: "";
-    z-index: -1;
-    pointer-events: none;
-
-    position: absolute;
-    top: -20px;
-    right: 0;
-    bottom: 50%;
-    left: 0;
-
-    opacity: var(--backdrop-filter-opacity);
-    background-color: $background-color;
-    transition: background-color $theme-transition-duration;
-  }
-
-  &::after {
     content: "";
     z-index: -1;
 
@@ -281,9 +281,11 @@ main {
     left: 0;
 
     opacity: var(--backdrop-filter-opacity);
-    background-color: $background-color;
+    background-image: radial-gradient(transparent, $background-color 1px);
+    background-size: 4px 4px;
+    backdrop-filter: blur($navbar-blur);
     transition: background-color $theme-transition-duration;
-    filter: blur($navbar-blur);
+    // filter: blur($navbar-blur);
   }
 }
 

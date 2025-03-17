@@ -72,9 +72,7 @@
   max-width: 100%;
   margin: 32px 0;
   padding: 16px;
-  border-radius: 24px;
   background-color: var(--background-color);
-  filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843));
   transition: background-color var(--theme-transition-duration);
 }
 .about-me-row div {
@@ -572,22 +570,9 @@ main a {
   right: 0;
   margin: 0;
   padding: 0 20px;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 .navbar::before {
-  content: "";
-  z-index: -1;
-  pointer-events: none;
-  position: absolute;
-  top: -20px;
-  right: 0;
-  bottom: 50%;
-  left: 0;
-  opacity: var(--backdrop-filter-opacity);
-  background-color: var(--background-color);
-  transition: background-color var(--theme-transition-duration);
-}
-.navbar::after {
   content: "";
   z-index: -1;
   position: absolute;
@@ -596,9 +581,11 @@ main a {
   bottom: 0;
   left: 0;
   opacity: var(--backdrop-filter-opacity);
-  background-color: var(--background-color);
+  background-image: radial-gradient(transparent, var(--background-color) 1px);
+  background-size: 4px 4px;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
   transition: background-color var(--theme-transition-duration);
-  filter: blur(8px);
 }
 
 #navbar-name {
