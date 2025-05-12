@@ -614,6 +614,7 @@ main a {
   display: flex;
   justify-content: stretch;
   align-items: center;
+  gap: 12px;
 }
 .navbar-content h1 {
   font-weight: 500;
@@ -669,6 +670,11 @@ main a {
 
 #nav-menu-button {
   display: none;
+}
+
+#theme-button img,
+#nav-menu-button img {
+  height: 1.5lh;
 }
 
 .logo {
@@ -883,6 +889,7 @@ main a {
   }
   .navbar-group:first-child {
     border: none;
+    box-shadow: none;
   }
   .logo {
     margin: 0;

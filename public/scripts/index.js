@@ -249,6 +249,7 @@ const DEFAULT_THEME = "dark";
 const THEME_ICONS = {
   light: "images/icons/sun.svg",
   dark: "images/icons/moon.svg",
+  system: "images/icons/system.svg",
 };
 
 const NAV_MENU_ICONS = {
@@ -262,7 +263,7 @@ fetch("storage/themes.json")
   .then((data) => {
     themesData = data;
     let theme = localStorage.getItem("theme") ?? DEFAULT_THEME;
-    applyTheme(theme);
+    setTheme(theme);
 
     setTimeout(
       () =>
@@ -275,12 +276,27 @@ fetch("storage/themes.json")
   });
 
 let currentTheme;
-function applyTheme(theme) {
-  let themeData = themesData[theme];
+let systemTheme;
 
-  Object.entries(themeData).forEach(([property, value]) => {
-    document.documentElement.style.setProperty("--" + property, value);
-  });
+updateSystemTheme();
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", updateSystemTheme);
+
+function updateSystemTheme() {
+  let isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  systemTheme = isDark ? "dark" : "light";
+
+  if (currentTheme === "system") applyTheme(systemTheme);
+}
+
+function setTheme(theme) {
+  let lightDark = theme;
+  if (theme === "system") {
+    lightDark = systemTheme;
+  }
+
+  applyTheme(lightDark);
 
   THEME_ICON.src = THEME_ICONS?.[theme];
 
@@ -288,10 +304,27 @@ function applyTheme(theme) {
   localStorage.setItem("theme", currentTheme);
 }
 
-function toggleTheme() {
-  let newTheme = currentTheme == "dark" ? "light" : "dark";
+function applyTheme(theme) {
+  let themeData = themesData[theme];
 
-  applyTheme(newTheme);
+  Object.entries(themeData).forEach(([property, value]) => {
+    document.documentElement.style.setProperty("--" + property, value);
+  });
+}
+
+function toggleTheme() {
+  let newTheme = "system";
+  switch (currentTheme) {
+    case "light":
+      newTheme = "dark";
+      break;
+    case "system":
+      newTheme = "light";
+      break;
+  }
+  // let newTheme = currentTheme == "dark" ? "light" : "dark";
+
+  setTheme(newTheme);
 }
 
 function toggleNavMenu(state) {
