@@ -241,6 +241,7 @@ main {
 
 .navbar {
   --backdrop-filter-opacity: 1;
+  --navbar-opacity-percent: 0%;
 
   z-index: 400;
 
@@ -281,10 +282,9 @@ main {
     left: 0;
 
     opacity: var(--backdrop-filter-opacity);
-    background-image: radial-gradient(transparent, $background-color 1px);
-    background-size: 4px 4px;
+    background-image: radial-gradient(transparent, $background-color 2px);
+    background-size: 5px 5px;
     backdrop-filter: blur($navbar-blur);
-    transition: background-color $theme-transition-duration;
     // filter: blur($navbar-blur);
   }
 }
@@ -298,7 +298,7 @@ main {
   z-index: 900;
 
   &::after {
-    content: "";
+    // content: "";
     position: absolute;
     left: 0;
     bottom: -4px;
@@ -319,14 +319,31 @@ main {
   justify-content: stretch;
   align-items: center;
 
-  &>h1 {
+  h1 {
     font-weight: 500;
-    margin-left: 20px;
+    margin: 0 20px;
   }
 
-  nav {
-    margin-left: auto;
+  .navbar-group {
+    display: flex;
+    align-items: center;
     z-index: 900;
+    height: 2lh;
+
+    border: 2px solid $accent-fade;
+    box-shadow: 0 0 8px $accent-fade;
+
+    border-color: color-mix(in srgb, $accent-fade var(--navbar-opacity-percent), transparent);
+    box-shadow: 0 0 8px color-mix(in srgb, $accent-fade var(--navbar-opacity-percent), transparent);
+
+    background-color: $background-color;
+    border-radius: 16px;
+
+    transition: background-color $theme-transition-duration;
+
+    &:not(:first-child) {
+      margin-left: auto;
+    }
   }
 
   nav * {
@@ -376,9 +393,10 @@ main {
 
 .logo {
   aspect-ratio: 1;
-  height: 70%;
+  height: calc($navbar-height - 16px);
   z-index: 1000;
   border-radius: 50%;
+  margin-left: -8px;
 }
 
 .header {
@@ -510,13 +528,21 @@ main {
 #skills-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 8px;
 }
+
+// #skills-container {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(calc($skill-icon-size-max + 30px), 1fr));
+//   gap: 8px;
+// }
 
 .skill {
   margin: 8px 16px;
   display: flex;
-  flex: 1 1 0px;
+  width: calc(100%/10);
+  // flex: 1 1 0px;
   flex-direction: column;
   align-items: center;
   transition: filter 0.9s $super-ease-in-out;
@@ -532,14 +558,15 @@ main {
     min-height: 50px;
     width: auto;
     height: 6vw;
-    max-width: 120px;
-    max-height: 120px;
+    max-width: $skill-icon-size-max;
+    max-height: $skill-icon-size-max;
   }
 
   &>span {
     margin-top: 8px;
     position: relative;
     width: fit-content;
+    white-space: nowrap;
   }
 
   &>span::after {
@@ -602,12 +629,22 @@ main {
   .navbar-buttons {
     flex-grow: 1;
     justify-content: flex-end;
+
+    button {
+      margin: auto 8px !important;
+    }
   }
 
   #nav-menu-button {
     display: block;
+  }
 
+  .navbar-group:first-child {
+    border: none;
+  }
 
+  .logo {
+    margin: 0;
   }
 
   #navbar-name {

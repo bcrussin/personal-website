@@ -6,7 +6,7 @@ $padding-width: 20px;
 
 $navbar-height: 80px;
 $navbar-width: 1200px;
-$navbar-blur: 4px;
+$navbar-blur: 8px;
 
 $social-button-size: 36pt;
 
@@ -15,6 +15,8 @@ $text-color-fade: var(--text-color-fade);
 $border-color: var(--border-color);
 
 $link-color: #367bf5;
+
+$skill-icon-size-max: 60px;
 
 $system-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
 	"Helvetica Neue", sans-serif;

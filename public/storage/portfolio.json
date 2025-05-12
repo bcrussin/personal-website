@@ -1,5 +1,30 @@
 [
     {
+        "title": "Web Synth",
+        "image": "images/portfolio/web-synth.png",
+        "description": [
+            "This Vue project utilizes the Web Audio API to provide a customizable synthesizer that supports mouse, keyboard, and MIDI control.",
+            "It also currently supports custom waveforms, audio effects, and MIDI channel automation."
+        ],
+        "links": [
+            {
+                "label": "Visit",
+                "href": "https://bcrussin.github.io/web-synth/",
+                "primary": true
+            },
+            {
+                "label": "Github",
+                "href": "https://github.com/bcrussin/web-synth"
+            }
+        ],
+        "tags": [
+            "Vue.js",
+            "TypeScript",
+            "Web Audio API",
+            "Web App"
+        ]
+    },
+    {
         "title": "JS Markdown Editor",
         "image": "images/portfolio/js-markdown-editor.png",
         "description": [

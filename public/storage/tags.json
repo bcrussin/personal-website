@@ -3,29 +3,36 @@
         "color": "#b676ea",
         "isTextLight": false
     },
-
     "SCSS": {
         "color": "pink",
         "isTextLight": false
     },
-
     "JavaScript": {
         "color": "#f0db4f",
         "isTextLight": false
     },
-
+    "TypeScript": {
+        "color": "#3078C6",
+        "isTextLight": true
+    },
     "localStorage": {
         "color": "#eab676",
         "isTextLight": false
     },
-
+    "Web Audio API": {
+        "color": "#A63346",
+        "isTextLight": true
+    },
     "Web App": {
         "color": "#ea99a2",
         "isTextLight": false
     },
-    
     "Game Development": {
         "color": "#76aaea",
+        "isTextLight": false
+    },
+    "Vue.js": {
+        "color": "#42B883",
         "isTextLight": false
     }
 }

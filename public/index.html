@@ -29,31 +29,36 @@
     <div class="navbar" id="navbar">
       <canvas id="background-canvas-navbar" class="background-canvas"></canvas>
       <div class="navbar-content">
-        <img class="logo" alt="Barrett Crusse logo" src="images/logo.jpg" />
-        <h1 class="system-font" id="navbar-name">Barrett Crusse</h1>
-        <nav id="nav-container">
-          <a tabindex="0" onclick="scrollToElem('#home')">Home</a>
-          <a tabindex="0" onclick="scrollToElem('#about-me')">About Me</a>
-          <a tabindex="0" onclick="scrollToElem('#skills')">Skills</a>
-          <a tabindex="0" onclick="scrollToElem('#portfolio')">Portfolio</a>
-          <a tabindex="0" onclick="scrollToElem('#contact')">Contact</a>
-        </nav>
+        <div class="navbar-group">
+          <img class="logo" alt="Barrett Crusse logo" src="images/logo.jpg" />
+          <h1 class="system-font" id="navbar-name">Barrett Crusse</h1>
+        </div>
 
-        <div class="navbar-buttons">
-          <button
-            id="theme-button"
-            aria-label="Theme toggle"
-            onclick="toggleTheme()"
-          >
-            <img id="theme-icon" />
-          </button>
-          <button
-            id="nav-menu-button"
-            aria-label="Navigation menu"
-            onclick="toggleNavMenu()"
-          >
-            <img id="nav-menu-icon" />
-          </button>
+        <div class="navbar-group">
+          <nav id="nav-container">
+            <a tabindex="0" onclick="scrollToElem('#home')">Home</a>
+            <a tabindex="0" onclick="scrollToElem('#about-me')">About Me</a>
+            <a tabindex="0" onclick="scrollToElem('#skills')">Skills</a>
+            <a tabindex="0" onclick="scrollToElem('#portfolio')">Portfolio</a>
+            <a tabindex="0" onclick="scrollToElem('#contact')">Contact</a>
+          </nav>
+
+          <div class="navbar-buttons">
+            <button
+              id="theme-button"
+              aria-label="Theme toggle"
+              onclick="toggleTheme()"
+            >
+              <img id="theme-icon" />
+            </button>
+            <button
+              id="nav-menu-button"
+              aria-label="Navigation menu"
+              onclick="toggleNavMenu()"
+            >
+              <img id="nav-menu-icon" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -102,7 +107,7 @@
         </div>
       </div>
 
-      <div id="about-me" class="section pad-sides clamp-width">
+      <div id="about-me" class="section clamp-width">
         <h1 class="gradient-underline section-header">About Me</h1>
         <div id="about-me-content">
           <div class="about-me-row row-right">
@@ -168,34 +173,58 @@
 
       <div id="skills" class="section pad-sides dark-background">
         <h2 class="section-header">I have experience using:</h2>
-        <div id="skills-container">
+        <div id="skills-container" class="clamp-width">
           <div class="skill">
-            <img alt="" src="images/javascript.svg" />
+            <img alt="" src="images/skills/javascript.svg" />
             <span>Javascript</span>
           </div>
           <div class="skill">
-            <img alt="" src="images/html5.svg" />
+            <img alt="" src="images/skills/html5.svg" />
             <span>HTML 5</span>
           </div>
           <div class="skill">
-            <img alt="" src="images/css.svg" />
+            <img alt="" src="images/skills/css.svg" />
             <span>CSS</span>
           </div>
           <div class="skill">
-            <img alt="" src="images/angular.svg" />
+            <img alt="" src="images/skills/angular.svg" />
             <span>Angular</span>
           </div>
           <div class="skill">
-            <img alt="" src="images/python.svg" />
+            <img alt="" src="images/skills/python.svg" />
             <span>Python</span>
           </div>
           <div class="skill">
             <img
               alt=""
-              src="images/django.svg"
+              src="images/skills/django.svg"
               style="filter: brightness(1.6)"
             />
             <span>Django</span>
+          </div>
+          <div class="skill">
+            <img alt="" src="images/skills/typescript.svg" />
+            <span>Typescript</span>
+          </div>
+          <div class="skill">
+            <img alt="" src="images/skills/vue.svg" />
+            <span>Vue</span>
+          </div>
+          <div class="skill">
+            <img alt="" src="images/skills/react.svg" />
+            <span>React</span>
+          </div>
+          <div class="skill">
+            <img alt="" src="images/skills/node-js.svg" />
+            <span>Node.js</span>
+          </div>
+          <div class="skill">
+            <img alt="" src="images/skills/express.svg" />
+            <span>Express</span>
+          </div>
+          <div class="skill">
+            <img alt="" src="images/skills/redis.svg" />
+            <span>Redis</span>
           </div>
         </div>
       </div>

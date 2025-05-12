@@ -93,9 +93,9 @@
   .about-me-row {
     flex-direction: column;
     margin: 0;
-    padding: 16px 8px;
+    padding: 16px 20px;
     border: 0;
-    border-radius: 24px;
+    border-radius: 0;
     filter: none;
   }
   .about-me-row p:first-child {
@@ -562,6 +562,7 @@ main a {
 
 .navbar {
   --backdrop-filter-opacity: 1;
+  --navbar-opacity-percent: 0%;
   z-index: 400;
   position: fixed;
   height: 80px;
@@ -570,7 +571,7 @@ main a {
   right: 0;
   margin: 0;
   padding: 0 20px;
-  padding-bottom: 4px;
+  padding-bottom: 8px;
 }
 .navbar::before {
   content: "";
@@ -581,11 +582,10 @@ main a {
   bottom: 0;
   left: 0;
   opacity: var(--backdrop-filter-opacity);
-  background-image: radial-gradient(transparent, var(--background-color) 1px);
-  background-size: 4px 4px;
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
-  transition: background-color var(--theme-transition-duration);
+  background-image: radial-gradient(transparent, var(--background-color) 2px);
+  background-size: 5px 5px;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
 }
 
 #navbar-name {
@@ -596,7 +596,6 @@ main a {
   z-index: 900;
 }
 #navbar-name::after {
-  content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
@@ -616,13 +615,25 @@ main a {
   justify-content: stretch;
   align-items: center;
 }
-.navbar-content > h1 {
+.navbar-content h1 {
   font-weight: 500;
-  margin-left: 20px;
+  margin: 0 20px;
 }
-.navbar-content nav {
-  margin-left: auto;
+.navbar-content .navbar-group {
+  display: flex;
+  align-items: center;
   z-index: 900;
+  height: 2lh;
+  border: 2px solid rgba(230, 74, 63, 0.5019607843);
+  box-shadow: 0 0 8px rgba(230, 74, 63, 0.5019607843);
+  border-color: color-mix(in srgb, rgba(230, 74, 63, 0.5019607843) var(--navbar-opacity-percent), transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, rgba(230, 74, 63, 0.5019607843) var(--navbar-opacity-percent), transparent);
+  background-color: var(--background-color);
+  border-radius: 16px;
+  transition: background-color var(--theme-transition-duration);
+}
+.navbar-content .navbar-group:not(:first-child) {
+  margin-left: auto;
 }
 .navbar-content nav * {
   margin-left: 12px;
@@ -662,9 +673,10 @@ main a {
 
 .logo {
   aspect-ratio: 1;
-  height: 70%;
+  height: 64px;
   z-index: 1000;
   border-radius: 50%;
+  margin-left: -8px;
 }
 
 .header {
@@ -778,13 +790,14 @@ main a {
 #skills-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 8px;
 }
 
 .skill {
   margin: 8px 16px;
   display: flex;
-  flex: 1 1 0px;
+  width: 10%;
   flex-direction: column;
   align-items: center;
   transition: filter 0.9s cubic-bezier(0.1, 0.5, 0.15, 0.8);
@@ -799,14 +812,15 @@ main a {
   min-height: 50px;
   width: auto;
   height: 6vw;
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 60px;
+  max-height: 60px;
 }
 .skill > span {
   margin-top: 8px;
   position: relative;
   width: -moz-fit-content;
   width: fit-content;
+  white-space: nowrap;
 }
 .skill > span::after {
   content: "";
@@ -861,8 +875,17 @@ main a {
     flex-grow: 1;
     justify-content: flex-end;
   }
+  .navbar-buttons button {
+    margin: auto 8px !important;
+  }
   #nav-menu-button {
     display: block;
+  }
+  .navbar-group:first-child {
+    border: none;
+  }
+  .logo {
+    margin: 0;
   }
   #navbar-name {
     display: none;
