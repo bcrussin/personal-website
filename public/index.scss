@@ -242,6 +242,7 @@ main {
 .navbar {
   --backdrop-filter-opacity: 1;
   --navbar-opacity-percent: 0%;
+  --navbar-logo-height: 100%;
 
   z-index: 400;
 
@@ -270,6 +271,10 @@ main {
   //   background-color: $background-color;
   //   transition: background-color $theme-transition-duration;
   // }
+
+  .logo {
+    height: var(--navbar-logo-height);
+  }
 
   &::before {
     content: "";
@@ -331,14 +336,15 @@ main {
     z-index: 900;
     height: 2lh;
 
-    border: 2px solid $accent-fade;
-    box-shadow: 0 0 8px $accent-fade;
+    // border: 2px solid $accent-fade;
+    box-shadow: 0 0 12px $accent-fade;
 
-    border-color: color-mix(in srgb, $accent-fade var(--navbar-opacity-percent), transparent);
-    box-shadow: 0 0 8px color-mix(in srgb, $accent-fade var(--navbar-opacity-percent), transparent);
+    // border-color: color-mix(in srgb, $accent-fade var(--navbar-opacity-percent), transparent);
+    box-shadow: 0 0 12px color-mix(in srgb, $accent var(--navbar-opacity-percent), transparent),
+      inset 0 0 8px color-mix(in srgb, $text-color-fade var(--navbar-opacity-percent), transparent);
 
     background-color: $background-color;
-    border-radius: 16px;
+    border-radius: 24px;
 
     transition: background-color $theme-transition-duration;
 
@@ -392,17 +398,23 @@ main {
   display: none;
 }
 
+#theme-button {
+  margin-right: 4px;
+}
+
 #theme-button img,
 #nav-menu-button img {
   height: 1.5lh;
 }
 
 .logo {
+  position: relative;
   aspect-ratio: 1;
-  height: calc($navbar-height - 16px);
+  // height: calc($navbar-height - 16px);
+  // height: 100%;
   z-index: 1000;
   border-radius: 50%;
-  margin-left: -8px;
+  // margin-left: -8px;
 }
 
 .header {
@@ -633,11 +645,12 @@ main {
   }
 
   .navbar-buttons {
+    margin: auto 8px;
     flex-grow: 1;
     justify-content: flex-end;
 
     button {
-      margin: auto 8px !important;
+      margin: auto 4px !important;
     }
   }
 
@@ -652,7 +665,9 @@ main {
 
   .logo {
     margin: 0;
+    height: 100% !important;
   }
+
 
   #navbar-name {
     display: none;

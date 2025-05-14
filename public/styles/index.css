@@ -563,6 +563,7 @@ main a {
 .navbar {
   --backdrop-filter-opacity: 1;
   --navbar-opacity-percent: 0%;
+  --navbar-logo-height: 100%;
   z-index: 400;
   position: fixed;
   height: 80px;
@@ -572,6 +573,9 @@ main a {
   margin: 0;
   padding: 0 20px;
   padding-bottom: 8px;
+}
+.navbar .logo {
+  height: var(--navbar-logo-height);
 }
 .navbar::before {
   content: "";
@@ -625,12 +629,10 @@ main a {
   align-items: center;
   z-index: 900;
   height: 2lh;
-  border: 2px solid rgba(230, 74, 63, 0.5019607843);
-  box-shadow: 0 0 8px rgba(230, 74, 63, 0.5019607843);
-  border-color: color-mix(in srgb, rgba(230, 74, 63, 0.5019607843) var(--navbar-opacity-percent), transparent);
-  box-shadow: 0 0 8px color-mix(in srgb, rgba(230, 74, 63, 0.5019607843) var(--navbar-opacity-percent), transparent);
+  box-shadow: 0 0 12px rgba(230, 74, 63, 0.5019607843);
+  box-shadow: 0 0 12px color-mix(in srgb, #e23745 var(--navbar-opacity-percent), transparent), inset 0 0 8px color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
   background-color: var(--background-color);
-  border-radius: 16px;
+  border-radius: 24px;
   transition: background-color var(--theme-transition-duration);
 }
 .navbar-content .navbar-group:not(:first-child) {
@@ -672,17 +674,20 @@ main a {
   display: none;
 }
 
+#theme-button {
+  margin-right: 4px;
+}
+
 #theme-button img,
 #nav-menu-button img {
   height: 1.5lh;
 }
 
 .logo {
+  position: relative;
   aspect-ratio: 1;
-  height: 64px;
   z-index: 1000;
   border-radius: 50%;
-  margin-left: -8px;
 }
 
 .header {
@@ -878,11 +883,12 @@ main a {
     right: 0;
   }
   .navbar-buttons {
+    margin: auto 8px;
     flex-grow: 1;
     justify-content: flex-end;
   }
   .navbar-buttons button {
-    margin: auto 8px !important;
+    margin: auto 4px !important;
   }
   #nav-menu-button {
     display: block;
@@ -893,6 +899,7 @@ main a {
   }
   .logo {
     margin: 0;
+    height: 100% !important;
   }
   #navbar-name {
     display: none;

@@ -203,40 +203,40 @@ function scrollToElem(query) {
 }
 
 function fadeNavbarBackground() {
-  if (MAIN_SECTION.scrollTop > SCROLL_Y_MAX) {
-    BACKGROUND_NAVBAR.style.opacity = END_FADE_OPACITY;
-    NAVBAR.style.setProperty("--backdrop-filter-opacity", END_BG_OPACITY);
-    NAVBAR.style.setProperty("--navbar-opacity-percent", "100%");
-    return;
+  let scroll = MAIN_SECTION.scrollTop;
+  let bgOpacity = END_BG_OPACITY;
+
+  if (MAIN_SECTION.scrollTop < SCROLL_Y_MAX) {
+    bgOpacity = mapToRange(
+      scroll,
+      0,
+      SCROLL_Y_MAX,
+      START_BG_OPACITY,
+      END_BG_OPACITY
+    );
   }
 
-  let scroll = Math.min(MAIN_SECTION.scrollTop, SCROLL_Y_MAX);
-  let dotsOpacity = mapToRange(
-    scroll,
-    0,
-    SCROLL_Y_MAX,
-    START_FADE_OPACITY,
-    END_FADE_OPACITY
-  );
-  let bgOpacity = mapToRange(
-    scroll,
-    0,
-    SCROLL_Y_MAX,
-    START_BG_OPACITY,
-    END_BG_OPACITY
-  );
+  let borderOpacity = END_BG_OPACITY;
+  let logoHeight = 100;
 
-  BACKGROUND_NAVBAR.style.opacity = dotsOpacity;
-  // let filter = `brightness(${bgOpacity}) blur(10px)`;
-  // NAVBAR.style.backdropFilter = filter;
+  if (MAIN_SECTION.scrollTop < SCROLL_Y_MAX * 4) {
+    borderOpacity = mapToRange(
+      scroll,
+      0,
+      SCROLL_Y_MAX * 4,
+      START_BG_OPACITY,
+      END_BG_OPACITY
+    );
+
+    logoHeight = mapToRange(scroll, 0, SCROLL_Y_MAX * 4, 150, 100);
+  }
+
   NAVBAR.style.setProperty("--backdrop-filter-opacity", bgOpacity);
-  NAVBAR.style.setProperty("--navbar-opacity-percent", bgOpacity * 100 + "%");
-
-  // for (let elem of NAVBAR_BLURS) {
-  // 	elem.style.setProperty('--backdrop-filter', `brightness(${bgOpacity}) blur(20px)`);
-  // }
-
-  // NAVBAR.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
+  NAVBAR.style.setProperty(
+    "--navbar-opacity-percent",
+    borderOpacity * 100 + "%"
+  );
+  NAVBAR.style.setProperty("--navbar-logo-height", logoHeight + "%");
 }
 
 MAIN_SECTION.addEventListener("scroll", (e) => {
