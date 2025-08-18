@@ -228,7 +228,7 @@ function fadeNavbarBackground() {
       END_BG_OPACITY
     );
 
-    logoHeight = mapToRange(scroll, 0, SCROLL_Y_MAX * 4, 150, 100);
+    logoHeight = mapToRange(scroll, 0, SCROLL_Y_MAX * 4, 140, 100);
   }
 
   NAVBAR.style.setProperty("--backdrop-filter-opacity", bgOpacity);
