@@ -245,7 +245,7 @@ MAIN_SECTION.addEventListener("scroll", (e) => {
 fadeNavbarBackground();
 
 /* _____ THEMING _____ */
-const DEFAULT_THEME = "dark";
+const DEFAULT_THEME = "system";
 const THEME_ICONS = {
   light: "images/icons/sun.svg",
   dark: "images/icons/moon.svg",
@@ -258,6 +258,11 @@ const NAV_MENU_ICONS = {
 };
 
 let themesData;
+let currentTheme;
+let systemTheme;
+
+updateSystemTheme();
+
 fetch("storage/themes.json")
   .then((res) => res.json())
   .then((data) => {
@@ -275,10 +280,6 @@ fetch("storage/themes.json")
     );
   });
 
-let currentTheme;
-let systemTheme;
-
-updateSystemTheme();
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", updateSystemTheme);
