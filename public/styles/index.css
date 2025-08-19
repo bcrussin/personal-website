@@ -350,6 +350,10 @@
   opacity: 1;
 }
 
+@font-face {
+  font-family: "Geologica";
+  src: url(../fonts/Geologica.ttf);
+}
 html {
   scroll-behavior: smooth;
 }

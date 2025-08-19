@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "barrett-crusse-website",
+    "default": "barrett-crusse",
     "production": "barrett-crusse"
   },
   "targets": {},
