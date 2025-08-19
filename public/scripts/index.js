@@ -151,7 +151,6 @@ function populatePortfolio() {
       let a = document.createElement("a");
       a.innerHTML = link.label;
       a.href = link.href;
-      a.target = "_blank";
 
       if (!!link?.primary) a.classList.add("primary");
 
