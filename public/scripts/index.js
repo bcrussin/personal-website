@@ -189,6 +189,9 @@ const END_FADE_OPACITY = 0;
 const START_BG_OPACITY = 0;
 const END_BG_OPACITY = 1;
 
+const START_HEADER_SIZE = 1;
+const END_HEADER_SIZE = 0.8;
+
 function scrollToElem(query) {
   this.toggleNavMenu(false);
 
@@ -217,6 +220,7 @@ function fadeNavbarBackground() {
   }
 
   let borderOpacity = END_BG_OPACITY;
+  let headerSize = END_HEADER_SIZE;
   let logoHeight = 100;
 
   if (MAIN_SECTION.scrollTop < SCROLL_Y_MAX * 4) {
@@ -228,6 +232,14 @@ function fadeNavbarBackground() {
       END_BG_OPACITY
     );
 
+    headerSize = mapToRange(
+      scroll,
+      0,
+      SCROLL_Y_MAX * 4,
+      START_HEADER_SIZE,
+      END_HEADER_SIZE
+    );
+
     logoHeight = mapToRange(scroll, 0, SCROLL_Y_MAX * 4, 140, 100);
   }
 
@@ -236,6 +248,7 @@ function fadeNavbarBackground() {
     "--navbar-opacity-percent",
     borderOpacity * 100 + "%"
   );
+  NAVBAR.style.setProperty("--navbar-header-size", headerSize);
   NAVBAR.style.setProperty("--navbar-logo-height", logoHeight + "%");
 }
 

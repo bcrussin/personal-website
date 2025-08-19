@@ -174,7 +174,7 @@
   justify-content: stretch;
   padding: 0 32px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: small;
+  font-size: 1rem;
 }
 #portfolio-container .portfolio-item .portfolio-summary .portfolio-links {
   flex: 1;
@@ -195,10 +195,10 @@
 #portfolio-container .portfolio-item .portfolio-summary .portfolio-links li::before {
   content: "› ";
   font-weight: bolder;
-  font-size: 24pt;
+  font-size: 2rem;
   vertical-align: middle;
   opacity: 0.6;
-  padding-bottom: 4px;
+  padding-bottom: 0.4rem;
   transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
 }
 #portfolio-container .portfolio-item .portfolio-summary .portfolio-links li a.primary,
@@ -207,7 +207,7 @@
 }
 #portfolio-container .portfolio-item .portfolio-summary .portfolio-links li a {
   height: 100%;
-  font-size: 16pt;
+  font-size: 1.4rem;
   vertical-align: middle;
   text-decoration: none;
   color: var(--text-color);
@@ -225,17 +225,18 @@
 #portfolio-container .portfolio-item .portfolio-summary .tags-list {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 #portfolio-container .portfolio-item .portfolio-summary .tags-list .tag {
   background-color: #bd1321;
   cursor: default;
   opacity: 0.8;
-  font-size: 10pt;
+  font-size: 0.8rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   border-radius: 12px;
   padding: 2px 8px;
-  margin: 4px;
   transition: all 0.4s cubic-bezier(0.1, 0.5, 0.15, 0.8);
 }
 #portfolio-container .portfolio-item .portfolio-summary .tags-list .tag:hover {
@@ -561,6 +562,7 @@ main a {
 .navbar {
   --backdrop-filter-opacity: 1;
   --navbar-opacity-percent: 0%;
+  --navbar-header-size: 24px;
   --navbar-logo-height: 100%;
   z-index: 400;
   position: fixed;
@@ -621,6 +623,7 @@ main a {
 .navbar-content h1 {
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
   margin: 0 20px;
 }
 .navbar-content .navbar-group {
@@ -629,7 +632,7 @@ main a {
   z-index: 900;
   height: 2lh;
   box-shadow: 0 0 12px rgba(230, 74, 63, 0.5019607843);
-  box-shadow: inset 0 0 8px color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
+  box-shadow: inset 0 0 4px color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
   border: 2px solid color-mix(in srgb, rgba(230, 74, 63, 0.5019607843) var(--navbar-opacity-percent), transparent);
   background-color: var(--background-color);
   border-radius: 24px;

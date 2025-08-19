@@ -242,6 +242,7 @@ main {
 .navbar {
   --backdrop-filter-opacity: 1;
   --navbar-opacity-percent: 0%;
+  --navbar-header-size: 24px;
   --navbar-logo-height: 100%;
 
   z-index: 400;
@@ -328,6 +329,9 @@ main {
   h1 {
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
+    // font-size: var(--navbar-header-size);
+    // zoom: var(--navbar-header-size);
+    font-size: 1.4rem;
     margin: 0 20px;
   }
 
@@ -343,7 +347,7 @@ main {
     // border-color: color-mix(in srgb, $accent-fade var(--navbar-opacity-percent), transparent);
     // box-shadow: 0 0 12px color-mix(in srgb, $accent var(--navbar-opacity-percent), transparent),
     //   inset 0 0 8px color-mix(in srgb, $text-color-fade var(--navbar-opacity-percent), transparent);
-    box-shadow: inset 0 0 8px color-mix(in srgb, $text-color-fade var(--navbar-opacity-percent), transparent);
+    box-shadow: inset 0 0 4px color-mix(in srgb, $text-color-fade var(--navbar-opacity-percent), transparent);
     border: 2px solid color-mix(in srgb, $accent-fade var(--navbar-opacity-percent), transparent);
 
     background-color: $background-color;

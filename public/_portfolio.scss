@@ -58,7 +58,7 @@
 		justify-content: stretch;
 		padding: 0 32px;
 		font-family: $system-sans;
-		font-size: small;
+		font-size: 1rem;
 
 		.portfolio-links {
 			flex: 1;
@@ -81,10 +81,10 @@
 			li::before {
 				content: "› ";
 				font-weight: bolder;
-				font-size: 24pt;
+				font-size: 2rem;
 				vertical-align: middle;
 				opacity: 0.6;
-				padding-bottom: 4px;
+				padding-bottom: 0.4rem;
 				transition: all 0.4s $super-ease-out;
 			}
 
@@ -95,7 +95,7 @@
 
 			li a {
 				height: 100%;
-				font-size: 16pt;
+				font-size: 1.4rem;
 				vertical-align: middle;
 				text-decoration: none;
 				color: $text-color;
@@ -117,17 +117,18 @@
 		.tags-list {
 			display: flex;
 			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 4px;
 
 			.tag {
 				background-color: #bd1321;
 				cursor: default;
 				opacity: 0.8;
-				font-size: 10pt;
+				font-size: 0.8rem;
 				white-space: nowrap;
 				text-overflow: ellipsis;
 				border-radius: 12px;
 				padding: 2px 8px;
-				margin: 4px;
 				transition: all 0.4s $super-ease-in-out;
 			}
 
