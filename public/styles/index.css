@@ -679,6 +679,9 @@ main a {
   filter: var(--invert-filter);
   margin-bottom: -4px;
 }
+.navbar-content .navbar-buttons button img:hover {
+  filter: invert(39%) sepia(72%) saturate(599%) hue-rotate(318deg) brightness(91%) contrast(96%);
+}
 
 #nav-menu-button {
   display: none;
@@ -899,6 +902,9 @@ main a {
   }
   .navbar-buttons button {
     margin: auto 4px !important;
+  }
+  .navbar-buttons button img:hover {
+    filter: var(--invert-filter) !important;
   }
   #nav-menu-button {
     display: block;

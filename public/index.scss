@@ -416,6 +416,11 @@ main {
       img {
         filter: $invert-filter;
         margin-bottom: -4px;
+
+        &:hover {
+          // Calculated using https://codepen.io/sosuke/pen/Pjoqqp
+          filter: invert(39%) sepia(72%) saturate(599%) hue-rotate(318deg) brightness(91%) contrast(96%);
+        }
       }
     }
   }
@@ -679,6 +684,10 @@ main {
 
     button {
       margin: auto 4px !important;
+
+      img:hover {
+        filter: $invert-filter !important;
+      }
     }
   }
 
