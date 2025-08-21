@@ -469,9 +469,6 @@ main a {
   -webkit-text-fill-color: transparent;
   transition: transform 0.8s cubic-bezier(0.1, 0.5, 0.15, 0.8);
 }
-.gradient.grow:hover {
-  transform: scale(1.04);
-}
 .gradient.glow {
   text-shadow: 0 0 12px rgba(230, 74, 63, 0.6274509804) !important;
 }

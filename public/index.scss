@@ -137,9 +137,9 @@ main {
 
   transition: transform 0.8s $super-ease-in-out;
 
-  &.grow:hover {
-    transform: scale(1.04);
-  }
+  // &.grow:hover {
+  //   transform: scale(1.04);
+  // }
 
   &.glow {
     text-shadow: 0 0 12px #e64a3fa0 !important;

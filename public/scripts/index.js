@@ -1,5 +1,5 @@
 const FADE_TIMER = 250;
-const FADE_DELAY = 300;
+const FADE_DELAY = 200;
 
 const NAVBAR = document.getElementById("navbar");
 const NAVBAR_BLURS = document.querySelectorAll(".navbar .hide-background");
