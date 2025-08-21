@@ -262,42 +262,9 @@ main {
   padding: 0 20px;
   padding-bottom: $navbar-blur;
 
-  // &::before {
-  //   content: "";
-  //   z-index: -1;
-  //   pointer-events: none;
-
-  //   position: absolute;
-  //   top: -20px;
-  //   right: 0;
-  //   bottom: 50%;
-  //   left: 0;
-
-  //   opacity: var(--backdrop-filter-opacity);
-  //   background-color: $background-color;
-  //   transition: background-color $theme-transition-duration;
-  // }
-
   .logo {
     height: calc(var(--navbar-logo-height));
   }
-
-  // &::before {
-  //   content: "";
-  //   z-index: -1;
-
-  //   position: absolute;
-  //   top: -20px;
-  //   right: 0;
-  //   bottom: 0;
-  //   left: 0;
-
-  //   opacity: var(--backdrop-filter-opacity);
-  //   background-image: radial-gradient(transparent, $background-color 2px);
-  //   background-size: 5px 5px;
-  //   backdrop-filter: blur($navbar-blur);
-  //   // filter: blur($navbar-blur);
-  // }
 }
 
 #navbar-name {
@@ -334,9 +301,8 @@ main {
   h1 {
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
-    // font-size: var(--navbar-header-size);
-    // zoom: var(--navbar-header-size);
     font-size: 1.4rem;
+
     margin-left: 12px;
     margin-right: 20px;
   }
@@ -351,7 +317,7 @@ main {
     box-shadow: 0 0 12px $accent-fade;
 
     box-shadow: inset 0 0 4px color-mix(in srgb, $text-color-fade var(--navbar-opacity-percent), transparent);
-    border: 1px solid color-mix(in srgb, $text-color-fade var(--navbar-opacity-percent), transparent); // $accent-fade
+    border: 1px solid color-mix(in srgb, $text-color-fade var(--navbar-opacity-percent), transparent);
     border-radius: 24px;
 
     transition: background-color 0.6s ease-out;
@@ -442,12 +408,8 @@ main {
 .logo {
   position: relative;
   aspect-ratio: 1;
-  // height: calc($navbar-height - 16px);
-  // height: 100%;
   z-index: 1000;
   border-radius: 50%;
-  // left: -3px;
-  // margin-left: -8px;
 }
 
 .header {
@@ -582,12 +544,6 @@ main {
   justify-content: center;
   gap: 8px;
 }
-
-// #skills-container {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(calc($skill-icon-size-max + 30px), 1fr));
-//   gap: 8px;
-// }
 
 .skill {
   margin: 8px 16px;
