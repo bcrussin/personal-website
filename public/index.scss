@@ -650,6 +650,10 @@ main {
         filter: var(--invert-filter) !important;
       }
     }
+
+    img:not([src]) {
+      font-size: 0;
+    }
   }
 
   #nav-menu-button {

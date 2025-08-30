@@ -937,6 +937,9 @@ main a {
   .navbar-buttons button img:hover {
     filter: var(--invert-filter) !important;
   }
+  .navbar-buttons img:not([src]) {
+    font-size: 0;
+  }
   #nav-menu-button {
     display: block;
   }
