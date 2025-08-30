@@ -1,0 +1,34 @@
+@use 'variables' as vars;
+
+body:has(#error-container) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#error-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+
+	padding: 32px 16px;
+	max-width: 600px;
+	background-color: vars.$background-color;
+	border-radius: 8px;
+	text-align: center;
+
+	& h1,
+	h2,
+	p {
+		margin: 0;
+	}
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	padding: 8px 12px;
+}

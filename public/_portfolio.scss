@@ -1,4 +1,4 @@
-@import "_variables.scss";
+@use "_variables.scss" as vars;
 
 #portfolio {
 	h1 {
@@ -17,14 +17,14 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	background-color: $background-color;
+	background-color: vars.$background-color;
 	z-index: 100;
-	border: 2px solid $border-color;
+	border: 2px solid vars.$border-color;
 	margin-bottom: 32px;
 	border-radius: 12px;
 	box-sizing: border-box;
 	overflow: hidden;
-	transition: border $theme-transition-duration, background-color $theme-transition-duration;
+	transition: border vars.$theme-transition-duration, background-color vars.$theme-transition-duration;
 
 	img {
 		width: 100%;
@@ -44,7 +44,7 @@
 		left: 0;
 		width: 0;
 		background-image: linear-gradient(100deg, #bd1321, #e23745, #e64a3f, #e66146);
-		transition: all 0.2s $super-ease-out;
+		transition: all 0.2s vars.$super-ease-out;
 	}
 
 	&:hover h2::after {
@@ -57,7 +57,7 @@
 		flex-direction: column;
 		justify-content: stretch;
 		padding: 0 32px;
-		font-family: $system-sans;
+		font-family: vars.$system-sans;
 		font-size: 1rem;
 
 		.portfolio-links {
@@ -85,12 +85,12 @@
 				vertical-align: middle;
 				opacity: 0.6;
 				padding-bottom: 0.4rem;
-				transition: all 0.4s $super-ease-out;
+				transition: all 0.4s vars.$super-ease-out;
 			}
 
 			li a.primary,
 			li:has(.primary)::before {
-				color: $accent;
+				color: vars.$accent;
 			}
 
 			li a {
@@ -98,10 +98,10 @@
 				font-size: 1.4rem;
 				vertical-align: middle;
 				text-decoration: none;
-				color: $text-color;
+				color: vars.$text-color;
 				opacity: 0.6;
 				pointer-events: auto;
-				transition: all 0.4s $super-ease-out;
+				transition: all 0.4s vars.$super-ease-out;
 			}
 
 			li a:hover {
@@ -129,7 +129,7 @@
 				text-overflow: ellipsis;
 				border-radius: 12px;
 				padding: 2px 8px;
-				transition: all 0.4s $super-ease-in-out;
+				transition: all 0.4s vars.$super-ease-in-out;
 			}
 
 			.tag:hover {
@@ -150,7 +150,7 @@
 
 @media only screen and (max-width: 600px) {
 	.portfolio-item {
-		width: calc(100vw - $padding-width - $padding-width);
+		width: calc(100vw - vars.$padding-width - vars.$padding-width);
 	}
 
 	.tags-list {
@@ -169,7 +169,7 @@
 			margin-right: 48px;
 			padding: 0 8px;
 			border-radius: 8px;
-			border: 1px solid $text-color-fade;
+			border: 1px solid vars.$text-color-fade;
 
 			p:first-child {
 				margin-top: 4px;

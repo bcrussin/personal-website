@@ -1,4 +1,4 @@
-@import "_variables.scss";
+@use "_variables.scss" as vars;
 
 .email-container,
 .socials-container {
@@ -68,13 +68,13 @@
 }
 
 .source-link {
-	color: $text-color;
+	color: vars.$text-color;
 	opacity: 0.6;
 
 	font-size: smaller;
 	font-family: monospace;
 
-	transition: opacity 0.3s $super-ease-in-out;
+	transition: opacity 0.3s vars.$super-ease-in-out;
 
 	&:hover {
 		opacity: 1;

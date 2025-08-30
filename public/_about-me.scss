@@ -1,4 +1,4 @@
-@import "_variables.scss";
+@use "_variables.scss" as vars;
 
 #about-me {
 	max-width: 1000px;
@@ -9,7 +9,7 @@
 		max-width: 600px;
 		height: fit-content;
 
-		font-family: $system-sans;
+		font-family: vars.$system-sans;
 	}
 
 	.image {
@@ -84,8 +84,8 @@
 	margin: 32px 0;
 	padding: 16px;
 
-	background-color: $background-color;
-	transition: background-color $theme-transition-duration;
+	background-color: vars.$background-color;
+	transition: background-color vars.$theme-transition-duration;
 
 	div {
 		z-index: 10;
