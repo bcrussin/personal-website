@@ -387,6 +387,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 html:before {
@@ -424,7 +425,6 @@ body {
   background-color: var(--background-color);
   height: -moz-fit-content;
   height: fit-content;
-  overflow-y: scroll;
 }
 
 a {
