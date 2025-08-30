@@ -789,11 +789,11 @@ main a {
 .social-button:hover, .social-button:link:hover, .social-button:hover:hover, .social-button:visited:hover, .social-button:active:hover {
   opacity: 1;
   filter: drop-shadow(0 0 8px var(--text-color-fade));
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 .social-button img {
   height: 2.5lh;
-  opacity: 0.8;
+  filter: var(--invert-filter);
 }
 
 @keyframes arrow {

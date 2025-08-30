@@ -486,7 +486,7 @@ main {
 
   img {
     height: vars.$social-button-size;
-    color: vars.$text-color;
+    filter: var(--invert-filter);
   }
 }
 
