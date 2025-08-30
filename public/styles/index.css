@@ -453,7 +453,7 @@ a.button:hover {
 
 main {
   overflow-y: scroll;
-  max-height: 100vh;
+  max-height: 100%;
 }
 main a {
   color: #367bf5;

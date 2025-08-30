@@ -84,7 +84,7 @@ a.button {
 
 main {
   overflow-y: scroll;
-  max-height: 100vh;
+  max-height: 100%;
 
   & a {
     color: vars.$link-color;
