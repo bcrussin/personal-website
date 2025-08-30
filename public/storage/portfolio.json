@@ -2,6 +2,7 @@
     {
         "title": "Web Synth",
         "image": "images/portfolio/web-synth.png",
+        "color": "#42b883",
         "description": [
             "This Vue project utilizes the Web Audio API to provide a customizable synthesizer that supports mouse, keyboard, and MIDI control.",
             "It also currently supports custom waveforms, audio effects, and MIDI channel automation."
@@ -27,6 +28,7 @@
     {
         "title": "JS Markdown Editor",
         "image": "images/portfolio/js-markdown-editor.png",
+        "color": "#5c5c5c",
         "description": [
             "This is a web-based Markdown notes editor that uses <a href='https://showdownjs.com/' target='_blank'>ShowdownJS</a> to render markdown as HTML.",
             "Notes are saved to the browser's <code>localStorage</code> and can be searched by keyword. Statistics provide a summary of all notes, including total notes/characters/lines."
@@ -52,6 +54,7 @@
     {
         "title": "JMU Dining Options",
         "image": "images/portfolio/jmu-dining-options.png",
+        "color": "#450084",
         "description": [
             "This website was created for a class project. It provides quick access to the various dining options at James Madison University, and shows at a glance which locations are open and closed.",
             "<code>localStorage</code> is used to track pinned restaurants, and restaurants can be filtered by location, payment option, search term, and more."
@@ -76,6 +79,7 @@
     {
         "title": "Personal Website",
         "image": "images/portfolio/personal-website.png",
+        "color": "#e44d42a0",
         "description": [
             "The website you're viewing right now. Written using pure HTML, SCSS, and Javascript. Hosted using <a href='https://firebase.google.com/' target='_blank'>Firebase</a>."
         ],
@@ -94,6 +98,7 @@
     {
         "title": "Javascript Games",
         "image": "images/portfolio/js-games.png",
+        "color": "#64c8fa80",
         "description": [
             "This is a collection of games written in pure Javascript, including Tetris, Pong, Snake, and Tron"
         ],

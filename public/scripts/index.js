@@ -90,6 +90,11 @@ function populatePortfolio() {
     let container = document.createElement("div");
     container.classList.add("portfolio-item", "orange-border");
 
+    console.log(data.color, !!data.color);
+    if (!!data.color) {
+      container.style.setProperty("--glow-color", data.color);
+    }
+
     /* _____ IMAGE _____ */
     let image = document.createElement("img");
     image.alt = "";
