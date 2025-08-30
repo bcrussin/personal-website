@@ -290,9 +290,6 @@
   }
 }
 @media only screen and (max-height: 600px) {
-  .portfolio-item {
-    max-height: 80vh;
-  }
   .portfolio-item .portfolio-description {
     margin-top: 8px;
     padding: 0 8px;

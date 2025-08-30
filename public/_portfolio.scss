@@ -173,7 +173,6 @@
 
 @media only screen and (max-height: 600px) {
 	.portfolio-item {
-		max-height: 80vh;
 
 		.portfolio-description {
 			margin-top: 8px;
@@ -191,5 +190,6 @@
 		img {
 			display: none;
 		}
+
 	}
 }
