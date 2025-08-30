@@ -20,11 +20,4 @@ body:has(#error-container) {
 #error-container h2,
 #error-container p {
   margin: 0;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
 }/*# sourceMappingURL=404.css.map */

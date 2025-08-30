@@ -387,6 +387,19 @@ a {
   cursor: pointer;
 }
 
+a.button {
+  cursor: pointer;
+  padding: 4px 8px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  text-decoration: none;
+}
+a.button:hover {
+  border-color: #e23745;
+}
+
 .background-canvas {
   position: fixed;
   left: 0;
@@ -647,7 +660,7 @@ main a {
 .navbar-content .navbar-group::before:hover {
   background-color: color-mix(in srgb, var(--background-color) 86%, transparent);
 }
-.navbar-content nav * {
+.navbar-content #nav-container * {
   margin-left: 12px;
   color: var(--text-color) !important;
   width: -moz-fit-content;
@@ -661,25 +674,31 @@ main a {
   transition: color var(--theme-transition-duration);
   cursor: pointer;
 }
-.navbar-content nav *:hover {
+.navbar-content #nav-container *:first-child {
+  margin-left: 16px;
+}
+.navbar-content #nav-container *:hover {
   background-position: top left 100%;
 }
 .navbar-content .navbar-buttons {
   display: flex;
+  gap: 4px;
+  padding-right: 8px;
 }
 .navbar-content .navbar-buttons button {
   border: none;
   background: none;
   z-index: 1000;
   margin-left: 16px;
+  padding: 0;
+}
+.navbar-content .navbar-buttons button:hover img {
+  filter: invert(39%) sepia(72%) saturate(599%) hue-rotate(318deg) brightness(91%) contrast(96%);
   cursor: pointer;
 }
 .navbar-content .navbar-buttons button img {
   filter: var(--invert-filter);
   margin-bottom: -4px;
-}
-.navbar-content .navbar-buttons button img:hover {
-  filter: invert(39%) sepia(72%) saturate(599%) hue-rotate(318deg) brightness(91%) contrast(96%);
 }
 
 #nav-menu-button {
@@ -896,6 +915,7 @@ main a {
   }
   .navbar-buttons {
     margin: auto 8px;
+    padding: 0 !important;
     flex-grow: 1;
     justify-content: flex-end;
   }

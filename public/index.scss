@@ -46,6 +46,21 @@ a {
   cursor: pointer;
 }
 
+a.button {
+  cursor: pointer;
+  padding: 4px 8px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+
+  background-color: vars.$text-color;
+  color: vars.$background-color;
+  text-decoration: none;
+
+  &:hover {
+    border-color: vars.$accent;
+  }
+}
+
 .background-canvas {
   position: fixed;
   left: 0;
@@ -347,7 +362,7 @@ main {
     }
   }
 
-  nav * {
+  #nav-container * {
     margin-left: 12px;
     color: vars.$text-color !important;
     width: fit-content;
@@ -365,6 +380,10 @@ main {
     transition: color vars.$theme-transition-duration;
     cursor: pointer;
 
+    &:first-child {
+      margin-left: 16px;
+    }
+
     &:hover {
       background-position: top left 100%;
     }
@@ -372,22 +391,25 @@ main {
 
   .navbar-buttons {
     display: flex;
+    gap: 4px;
+    padding-right: 8px;
 
     button {
       border: none;
       background: none;
       z-index: 1000;
       margin-left: 16px;
-      cursor: pointer;
+      padding: 0;
+
+      &:hover img {
+        // Calculated using https://codepen.io/sosuke/pen/Pjoqqp
+        filter: invert(39%) sepia(72%) saturate(599%) hue-rotate(318deg) brightness(91%) contrast(96%);
+        cursor: pointer;
+      }
 
       img {
         filter: vars.$invert-filter;
         margin-bottom: -4px;
-
-        &:hover {
-          // Calculated using https://codepen.io/sosuke/pen/Pjoqqp
-          filter: invert(39%) sepia(72%) saturate(599%) hue-rotate(318deg) brightness(91%) contrast(96%);
-        }
       }
     }
   }
@@ -636,6 +658,7 @@ main {
 
   .navbar-buttons {
     margin: auto 8px;
+    padding: 0 !important;
     flex-grow: 1;
     justify-content: flex-end;
 
