@@ -12,28 +12,22 @@ let themesData;
 let currentTheme;
 let systemTheme;
 
+setTimeout(
+  () =>
+    document.documentElement.style.setProperty(
+      "--theme-transition-duration",
+      "0.2s"
+    ),
+  50
+);
+
 updateSystemTheme();
-
-fetch("storage/themes.json")
-  .then((res) => res.json())
-  .then((data) => {
-    themesData = data;
-    let theme = localStorage.getItem("theme") ?? DEFAULT_THEME;
-    setTheme(theme);
-
-    setTimeout(
-      () =>
-        document.documentElement.style.setProperty(
-          "--theme-transition-duration",
-          "0.2s"
-        ),
-      50
-    );
-  });
-
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", updateSystemTheme);
+
+let theme = localStorage.getItem("theme") ?? DEFAULT_THEME;
+setTheme(theme);
 
 function updateSystemTheme() {
   let isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -57,11 +51,8 @@ function setTheme(theme) {
 }
 
 function applyTheme(theme) {
-  let themeData = themesData[theme];
-
-  Object.entries(themeData).forEach(([property, value]) => {
-    document.documentElement.style.setProperty("--" + property, value);
-  });
+  if (theme == "dark") document.body.classList.add("dark");
+  else document.body.classList.remove("dark");
 }
 
 function toggleTheme() {

@@ -84,7 +84,7 @@
 	margin: 32px 0;
 	padding: 16px;
 
-	background-color: vars.$background-color;
+	background-color: var(--background-color);
 	transition: background-color vars.$theme-transition-duration;
 
 	div {

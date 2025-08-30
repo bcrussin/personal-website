@@ -10,9 +10,9 @@ $navbar-blur: 8px;
 
 $social-button-size: 36pt;
 
-$text-color: var(--text-color);
-$text-color-fade: var(--text-color-fade);
-$border-color: var(--border-color);
+// $text-color: var(--text-color);
+// $text-color-fade: var(--text-color-fade);
+// $border-color: var(--border-color);
 
 $link-color: #367bf5;
 
@@ -25,13 +25,33 @@ $super-ease-in: cubic-bezier(0.33, 0, 0.68, 0);
 $super-ease-in-out: cubic-bezier(0.1, 0.5, 0.15, 0.8);
 $super-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
 
-$navbar-backdrop-brightness: var(--navbar-backdrop-brightness);
-$invert-filter: var(--invert-filter);
+// $navbar-backdrop-brightness: var(--navbar-backdrop-brightness);
+// $invert-filter: var(--invert-filter);
 
-$background-color: var(--background-color);
-$background-color-fade: var(--background-color-fade);
+// $background-color: var(--background-color);
+// $background-color-fade: var(--background-color-fade);
 $accent: #e23745;
 $accent-fade: #e64a3f80;
 
 $primary-gradient-old: linear-gradient(100deg, #b2281e, rgb(179, 43, 34) 30%, #c2362c 60%, #d34338 100%);
 $primary-gradient: linear-gradient(100deg, #d62b39, #e23745 30%, #e64a3f 60%, #e45147 100%);
+
+:root {
+	--background-color: #eeeeee;
+	--background-color-fade: #eeeeee40;
+	--text-color: #222222;
+	--text-color-fade: #22222250;
+	--border-color: #00000020;
+	--navbar-backdrop-brightness: 1;
+	--invert-filter: invert(0);
+}
+
+.dark {
+	--background-color: #101010;
+	--background-color-fade: #10101040;
+	--text-color: #dddddd;
+	--text-color-fade: #dddddd50;
+	--border-color: #ffffff20;
+	--navbar-backdrop-brightness: 0.4;
+	--invert-filter: invert(1);
+}

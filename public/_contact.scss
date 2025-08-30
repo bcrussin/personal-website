@@ -68,7 +68,7 @@
 }
 
 .source-link {
-	color: vars.$text-color;
+	color: var(--text-color);
 	opacity: 0.6;
 
 	font-size: smaller;

@@ -1,3 +1,23 @@
+:root {
+  --background-color: #eeeeee;
+  --background-color-fade: #eeeeee40;
+  --text-color: #222222;
+  --text-color-fade: #22222250;
+  --border-color: #00000020;
+  --navbar-backdrop-brightness: 1;
+  --invert-filter: invert(0);
+}
+
+.dark {
+  --background-color: #101010;
+  --background-color-fade: #10101040;
+  --text-color: #dddddd;
+  --text-color-fade: #dddddd50;
+  --border-color: #ffffff20;
+  --navbar-backdrop-brightness: 0.4;
+  --invert-filter: invert(1);
+}
+
 body:has(#error-container) {
   display: flex;
   justify-content: center;
