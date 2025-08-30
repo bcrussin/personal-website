@@ -12,6 +12,7 @@ const MAIN_SECTION = document.getElementById("main-content");
 
 const NAV_MENU = document.getElementById("nav-container");
 const NAV_MENU_ICON = document.getElementById("nav-menu-icon");
+const THEME_ICON = document.getElementById("theme-icon");
 
 const BUFFER_CANVAS = document.createElement("canvas");
 const BUFFER = BUFFER_CANVAS.getContext("2d");
@@ -41,6 +42,7 @@ startFaded();
 window.onload = () => {
   calculateHeaderSize();
   toggleNavMenu(false);
+  setThemeIcon();
 
   fadeIn();
   fetch("storage/tags.json")
@@ -282,6 +284,10 @@ function toggleNavMenu(state) {
   );
 
   setTimeout(() => (NAV_MENU_ICON.src = icon), duration / 2);
+}
+
+function setThemeIcon() {
+  THEME_ICON.src = THEME_ICONS?.[currentTheme];
 }
 
 // Map one range of numbers to another

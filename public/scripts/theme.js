@@ -1,6 +1,4 @@
 /* _____ THEMING _____ */
-const THEME_ICON = document.getElementById("theme-icon");
-
 const DEFAULT_THEME = "system";
 const THEME_ICONS = {
   light: "images/icons/sun.svg",
@@ -43,10 +41,9 @@ function setTheme(theme) {
   }
 
   applyTheme(lightDark);
-
-  if (!!THEME_ICON) THEME_ICON.src = THEME_ICONS?.[theme];
-
   currentTheme = theme;
+
+  if (typeof setThemeIcon !== "undefined") setThemeIcon();
   localStorage.setItem("theme", currentTheme);
 }
 
