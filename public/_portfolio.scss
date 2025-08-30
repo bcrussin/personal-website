@@ -169,10 +169,6 @@
 	.portfolio-item {
 		width: calc(100vw - vars.$padding-width - vars.$padding-width);
 	}
-
-	.tags-list {
-		overflow-x: scroll;
-	}
 }
 
 @media only screen and (max-height: 600px) {
@@ -180,7 +176,6 @@
 		max-height: 80vh;
 
 		.portfolio-description {
-			overflow-y: scroll;
 			margin-top: 8px;
 			padding: 0 8px;
 
