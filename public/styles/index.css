@@ -9,7 +9,7 @@
   --invert-filter: invert(0);
 }
 
-.dark {
+:root:has(.dark) {
   --background-color: #101010;
   --background-color-fade: #10101040;
   --text-color: #dddddd;
@@ -389,6 +389,19 @@ html {
   scroll-behavior: smooth;
 }
 
+html:before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: var(--background-color);
+  background-image: radial-gradient(var(--border-color) 2px, transparent 0);
+  background-size: 20px 20px;
+  background-position: -19px -19px;
+}
+
 body,
 html {
   max-width: 100dvw;
@@ -407,10 +420,10 @@ html * {
 }
 
 body {
-  background: var(--background-color);
-  background-image: radial-gradient(var(--border-color) 2px, transparent 0);
-  background-size: 20px 20px;
-  background-position: -19px -19px;
+  background-color: var(--background-color);
+  height: -moz-fit-content;
+  height: fit-content;
+  overflow-y: scroll;
 }
 
 a {
@@ -430,31 +443,6 @@ a.button:hover {
   background-color: color-mix(in srgb, var(--border-color) 60%, transparent);
 }
 
-.background-canvas {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0.4;
-  pointer-events: none;
-  filter: var(--bg-canvas-filter);
-}
-
-#background-canvas {
-  clip-path: rect(80px 0 100% 100%);
-}
-
-#background-canvas-navbar {
-  clip-path: rect(0 0 80px 100%);
-  z-index: 500;
-  opacity: 0.4;
-}
-
-main {
-  overflow-y: scroll;
-  max-height: 100%;
-}
 main a {
   color: #367bf5;
 }
@@ -471,7 +459,7 @@ main a {
   filter: drop-shadow(0 0 8px rgba(238, 238, 238, 0.1254901961));
 }
 .section#contact {
-  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .lighten {
@@ -753,13 +741,13 @@ main a {
 
 .header {
   position: relative;
-  margin: 80px auto 1em auto;
+  margin: 0 auto 1em auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: -moz-fit-content;
   width: fit-content;
-  min-height: min(100vh - 80px, 1200px);
+  min-height: 100vh;
 }
 
 .section-header {

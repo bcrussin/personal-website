@@ -54,7 +54,7 @@ window.onload = () => {
 };
 
 function calculateHeaderSize() {
-  let height = Math.min(window.innerHeight - NAVBAR.clientHeight, 1200);
+  let height = Math.min(window.innerHeight, 1200);
   document.getElementById("home").style.minHeight = height + "px";
 }
 
@@ -195,20 +195,18 @@ function scrollToElem(query) {
   this.toggleNavMenu(false);
 
   let elem = document.querySelector(query);
-  MAIN_SECTION.scrollTo({
+  window.scrollTo({
     top:
-      elem.getBoundingClientRect().top +
-      MAIN_SECTION.scrollTop -
-      NAVBAR.clientHeight,
+      elem.getBoundingClientRect().top + window.scrollY - NAVBAR.clientHeight,
     behavior: "smooth",
   });
 }
 
 function fadeNavbarBackground() {
-  let scroll = MAIN_SECTION.scrollTop;
+  let scroll = window.scrollY;
   let bgOpacity = END_BG_OPACITY;
 
-  if (MAIN_SECTION.scrollTop < SCROLL_Y_MAX) {
+  if (window.scrollY < SCROLL_Y_MAX) {
     bgOpacity = mapToRange(
       scroll,
       0,
@@ -222,7 +220,7 @@ function fadeNavbarBackground() {
   let headerSize = END_HEADER_SIZE;
   let logoHeight = 100;
 
-  if (MAIN_SECTION.scrollTop < SCROLL_Y_MAX * 4) {
+  if (window.scrollY < SCROLL_Y_MAX * 4) {
     borderOpacity = mapToRange(
       scroll,
       0,
@@ -251,7 +249,7 @@ function fadeNavbarBackground() {
   NAVBAR.style.setProperty("--navbar-logo-height", logoHeight + "%");
 }
 
-MAIN_SECTION.addEventListener("scroll", (e) => {
+window.addEventListener("scroll", (e) => {
   fadeNavbarBackground();
 });
 fadeNavbarBackground();
