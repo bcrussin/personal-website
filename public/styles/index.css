@@ -743,7 +743,6 @@ main a {
   justify-content: center;
   width: -moz-fit-content;
   width: fit-content;
-  min-height: 100vh;
 }
 
 .section-header {

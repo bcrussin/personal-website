@@ -54,8 +54,8 @@ window.onload = () => {
 };
 
 function calculateHeaderSize() {
-  // let height = Math.min(window.innerHeight, 1200);
-  // document.getElementById("home").style.minHeight = height + "px";
+  let height = Math.min(window.innerHeight, 1200);
+  document.getElementById("home").style.minHeight = height + "px";
 }
 
 function startFaded() {
