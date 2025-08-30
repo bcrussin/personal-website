@@ -480,12 +480,13 @@ main {
     &:hover {
       opacity: 1;
       filter: drop-shadow(0 0 8px var(--text-color-fade));
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
   }
 
-  i {
-    font-size: vars.$social-button-size;
+  img {
+    height: vars.$social-button-size;
+    color: vars.$text-color;
   }
 }
 

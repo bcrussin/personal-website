@@ -791,8 +791,9 @@ main a {
   filter: drop-shadow(0 0 8px var(--text-color-fade));
   transform: scale(1.15);
 }
-.social-button i {
-  font-size: 36pt;
+.social-button img {
+  height: 2.5lh;
+  opacity: 0.8;
 }
 
 @keyframes arrow {
