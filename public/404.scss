@@ -13,11 +13,18 @@ body:has(#error-container) {
 	align-items: center;
 	gap: 16px;
 
-	padding: 32px 16px;
 	max-width: 600px;
+	margin: 16px;
+	padding: 32px;
 	background-color: vars.$background-color;
-	border-radius: 8px;
 	text-align: center;
+	border: 2px solid vars.$border-color;
+	border-radius: 16px;
+	box-shadow: 0 0 8px vars.$border-color;
+
+	& #error-code {
+		color: vars.$accent;
+	}
 
 	& h1,
 	h2,
