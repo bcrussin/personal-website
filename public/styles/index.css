@@ -406,8 +406,6 @@ html:before {
 body,
 html {
   max-width: 100dvw;
-  height: 100dvh;
-  max-height: 100dvh;
   margin: 0;
   padding: 0;
   color: var(--text-color);
@@ -423,8 +421,6 @@ html * {
 
 body {
   background-color: var(--background-color);
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 a {
@@ -748,7 +744,7 @@ main a {
   justify-content: center;
   width: -moz-fit-content;
   width: fit-content;
-  min-height: 100svh;
+  min-height: 100vh;
 }
 
 .section-header {

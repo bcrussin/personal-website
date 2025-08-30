@@ -11,6 +11,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 html:before {
@@ -30,8 +31,6 @@ html:before {
 body,
 html {
   max-width: 100dvw;
-  height: 100dvh;
-  max-height: 100dvh;
   margin: 0;
   padding: 0;
 
@@ -50,8 +49,6 @@ html {
 
 body {
   background-color: var(--background-color);
-  height: fit-content;
-  overflow-y: scroll;
 }
 
 a {
@@ -427,7 +424,7 @@ main {
   flex-direction: column;
   justify-content: center;
   width: fit-content;
-  min-height: 100svh;
+  min-height: 100vh;
 }
 
 .section-header {
