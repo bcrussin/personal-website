@@ -416,13 +416,14 @@ main {
   border-radius: 50%;
 }
 
-.header {
+#home {
   position: relative;
   margin: 0 auto 1em auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: fit-content;
+  min-height: 100svh;
 }
 
 .section-header {
