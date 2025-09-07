@@ -8,7 +8,7 @@
   --invert-filter: invert(0);
 }
 
-:root:has(.dark) {
+:root:has(body.dark) {
   --background-color: #101010;
   --background-color-fade: #10101040;
   --text-color: #dddddd;

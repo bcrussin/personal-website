@@ -9,7 +9,7 @@
   --invert-filter: invert(0);
 }
 
-:root:has(.dark) {
+:root:has(body.dark) {
   --background-color: #101010;
   --background-color-fade: #10101040;
   --text-color: #dddddd;
@@ -641,37 +641,6 @@ main a {
   margin-left: 12px;
   margin-right: 20px;
 }
-.navbar-content .navbar-group {
-  position: relative;
-  display: flex;
-  align-items: center;
-  z-index: 900;
-  height: 2lh;
-  box-shadow: 0 0 12px var(--text-color-fade);
-  box-shadow: inset 0 0 4px color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
-  border: 1px solid color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
-  border-radius: 24px;
-}
-.navbar-content .navbar-group:not(:first-child) {
-  margin-left: auto;
-}
-.navbar-content .navbar-group::before {
-  position: absolute;
-  content: "";
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-radius: inherit;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  background-color: color-mix(in srgb, var(--background-color) 70%, transparent);
-  transition: background-color var(--theme-transition-duration);
-}
-.navbar-content .navbar-group::before:hover {
-  background-color: color-mix(in srgb, var(--background-color) 86%, transparent);
-}
 .navbar-content #nav-container * {
   margin-left: 12px;
   color: var(--text-color) !important;
@@ -692,23 +661,80 @@ main a {
 .navbar-content #nav-container *:hover {
   background-position: top left 100%;
 }
-.navbar-content .navbar-buttons {
+
+.navbar-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 900;
+  height: 2lh;
+  box-shadow: 0 0 12px var(--text-color-fade);
+  box-shadow: inset 0 0 4px color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
+  border-radius: 24px;
+}
+.navbar-group:not(:first-child) {
+  margin-left: auto;
+}
+.navbar-group::before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: inherit;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: color-mix(in srgb, var(--background-color) 60%, transparent);
+  transition: background-color var(--theme-transition-duration);
+}
+.navbar-group:hover::before {
+  background-color: color-mix(in srgb, var(--background-color) 86%, transparent);
+}
+.navbar-group::after {
+  position: absolute;
+  content: "";
+  z-index: -12;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  border: 1px solid color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
+  border-radius: inherit;
+  opacity: var(--navbar-opacity-percent);
+}
+@supports ((-webkit-mask-composite: xor) or (mask-composite: exclude)) or (-webkit-mask-composite: xor) {
+  .navbar-group::after {
+    border: none;
+    background-image: linear-gradient(to bottom right, var(--text-color-fade) 10%, var(--border-color));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: exclude;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    padding: 1px;
+  }
+}
+
+.navbar-buttons {
   display: flex;
   gap: 4px;
   padding-right: 8px;
 }
-.navbar-content .navbar-buttons button {
+.navbar-buttons button {
   border: none;
   background: none;
   z-index: 1000;
   margin-left: 16px;
   padding: 0;
 }
-.navbar-content .navbar-buttons button:hover img {
+.navbar-buttons button:hover img {
   filter: invert(39%) sepia(72%) saturate(599%) hue-rotate(318deg) brightness(91%) contrast(96%);
   cursor: pointer;
 }
-.navbar-content .navbar-buttons button img {
+.navbar-buttons button img {
   filter: var(--invert-filter);
   margin-bottom: -4px;
 }
@@ -944,14 +970,13 @@ main a {
   #nav-menu-button {
     display: block;
   }
-  .navbar-group:first-child {
+  .navbar-group:has(.logo) {
     border: none;
     box-shadow: none;
   }
   .logo {
     margin: 0;
     height: 100% !important;
-    border: 1px solid color-mix(in srgb, var(--text-color-fade) var(--navbar-opacity-percent), transparent);
   }
   #navbar-name {
     display: none;
