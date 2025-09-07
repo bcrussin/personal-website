@@ -204,7 +204,8 @@
 @media (hover: hover) and (pointer: fine) {
   #portfolio-container .portfolio-item:hover {
     border-color: #e23745 !important;
-    filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
+    border-color: var(--hover-border-color) !important;
+    box-shadow: 0 0 8px var(--hover-border-color);
   }
   #portfolio-container .portfolio-item:hover h2::after {
     transform: scaleX(1);
@@ -212,7 +213,8 @@
 }
 #portfolio-container .portfolio-item.highlighted {
   border-color: #e23745 !important;
-  filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
+  border-color: var(--hover-border-color) !important;
+  box-shadow: 0 0 8px var(--hover-border-color);
 }
 #portfolio-container .portfolio-item.highlighted h2::after {
   transform: scaleX(1);

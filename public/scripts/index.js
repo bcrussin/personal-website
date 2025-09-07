@@ -85,6 +85,7 @@ const portfolioItemObserver = new IntersectionObserver(
 
     // Only run observer on small screens
     if (!widthQuery.matches && !heightQuery.matches) {
+      entries.forEach((entry) => entry.target.classList.remove("highlighted"));
       return;
     }
 
@@ -122,8 +123,9 @@ function createPortfolioItem(data) {
   let container = document.createElement("div");
   container.classList.add("portfolio-item");
 
-  if (!!data.color) {
-    container.style.setProperty("--glow-color", data.color);
+  if (!!data.glowColor) {
+    container.style.setProperty("--hover-border-color", data.borderColor);
+    container.style.setProperty("--glow-color", data.glowColor);
   }
 
   /* _____ IMAGE _____ */
