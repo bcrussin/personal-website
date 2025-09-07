@@ -164,24 +164,7 @@
   border-radius: 12px;
   box-sizing: border-box;
   overflow: hidden;
-  transition: border var(--theme-transition-duration), background-color var(--theme-transition-duration);
-}
-#portfolio-container .portfolio-item::after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  filter: blur(64px);
-  background: radial-gradient(circle at bottom right, var(--glow-color), transparent 60%);
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  opacity: 0.7;
-}
-#portfolio-container .portfolio-item img {
-  width: 100%;
+  transition: border 0.4s, background-color var(--theme-transition-duration);
 }
 #portfolio-container .portfolio-item h2 {
   position: relative;
@@ -199,7 +182,37 @@
   background-image: linear-gradient(100deg, #bd1321, #e23745, #e64a3f, #e66146);
   transition: all 0.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
-#portfolio-container .portfolio-item:hover h2::after {
+@media (hover: hover) and (pointer: fine) {
+  #portfolio-container .portfolio-item:hover {
+    border: 2px solid #e23745 !important;
+    filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
+  }
+  #portfolio-container .portfolio-item:hover h2::after {
+    width: 100%;
+  }
+}
+#portfolio-container .portfolio-item.highlighted {
+  border: 2px solid #e23745 !important;
+  filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
+}
+#portfolio-container .portfolio-item.highlighted h2::after {
+  width: 100%;
+}
+#portfolio-container .portfolio-item::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(64px);
+  background: radial-gradient(circle at bottom right, var(--glow-color), transparent 60%);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  opacity: 0.7;
+}
+#portfolio-container .portfolio-item img {
   width: 100%;
 }
 #portfolio-container .portfolio-item .portfolio-summary {
@@ -398,6 +411,7 @@ html:before {
   background-image: radial-gradient(var(--border-color) 2px, transparent 0);
   background-size: 20px 20px;
   background-position: -19px -19px;
+  transition: background-color var(--theme-transition-duration);
 }
 
 body,
@@ -554,10 +568,6 @@ main a {
 }
 
 .orange-border {
-  border: 2px solid transparent;
-  transition: border 0.5s cubic-bezier(0.1, 0.5, 0.15, 0.8);
-}
-.orange-border:hover {
   border: 2px solid #e23745 !important;
   filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
 }

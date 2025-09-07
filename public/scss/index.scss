@@ -24,6 +24,7 @@ html:before {
   background-image: radial-gradient(var(--border-color) 2px, transparent 0);
   background-size: 20px 20px;
   background-position: -19px -19px;
+  transition: background-color vars.$theme-transition-duration;
 }
 
 
@@ -204,13 +205,8 @@ main {
 }
 
 .orange-border {
-  border: 2px solid transparent;
-  transition: border 0.5s vars.$super-ease-in-out;
-
-  &:hover {
-    border: 2px solid #e23745 !important;
-    filter: drop-shadow(0 0 4px vars.$accent-fade) !important;
-  }
+  border: 2px solid #e23745 !important;
+  filter: drop-shadow(0 0 4px vars.$accent-fade) !important;
 }
 
 @keyframes fade-in {

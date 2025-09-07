@@ -25,26 +25,9 @@
 	border-radius: 12px;
 	box-sizing: border-box;
 	overflow: hidden;
-	transition: border vars.$theme-transition-duration, background-color vars.$theme-transition-duration;
-
-	&::after {
-		z-index: -1;
-		content: "";
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		filter: blur(64px);
-		background: radial-gradient(circle at bottom right, var(--glow-color), transparent 60%);
-		background-repeat: no-repeat;
-		background-position: bottom right;
-		opacity: 0.7;
-	}
-
-	img {
-		width: 100%;
-	}
+	transition: border 0.4s, background-color vars.$theme-transition-duration;
+	// border: 2px solid transparent;
+	// transition: border 0.5s vars.$super-ease-in-out;
 
 	h2 {
 		position: relative;
@@ -63,7 +46,42 @@
 		transition: all 0.2s vars.$super-ease-out;
 	}
 
-	&:hover h2::after {
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			border: 2px solid #e23745 !important;
+			filter: drop-shadow(0 0 4px vars.$accent-fade) !important;
+
+			h2::after {
+				width: 100%;
+			}
+		}
+	}
+
+	&.highlighted {
+		border: 2px solid #e23745 !important;
+		filter: drop-shadow(0 0 4px vars.$accent-fade) !important;
+
+		h2::after {
+			width: 100%;
+		}
+	}
+
+	&::after {
+		z-index: -1;
+		content: "";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		filter: blur(64px);
+		background: radial-gradient(circle at bottom right, var(--glow-color), transparent 60%);
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		opacity: 0.7;
+	}
+
+	img {
 		width: 100%;
 	}
 

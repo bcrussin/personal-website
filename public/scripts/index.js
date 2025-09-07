@@ -9,6 +9,7 @@ const SOCIAL_BUTTONS = document.getElementById("social-buttons");
 const LEARN_MORE = document.getElementById("learn-more");
 
 const MAIN_SECTION = document.getElementById("main-content");
+const CENTER_SENTINEL = document.getElementById("center-sentinel");
 
 const NAV_MENU = document.getElementById("nav-container");
 const NAV_MENU_ICON = document.getElementById("nav-menu-icon");
@@ -76,110 +77,130 @@ function fadeIn() {
   });
 }
 
+const portfolioItemObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("highlighted");
+      } else {
+        entry.target.classList.remove("highlighted");
+      }
+    });
+  },
+  {
+    root: null,
+    rootMargin: "-50% 0% -50% 0%",
+    threshold: 0,
+  }
+);
+
 function populatePortfolio() {
   fetch("storage/portfolio.json")
     .then((res) => res.json())
     .then((data) => {
       for (project of data) {
         let portfolioContainer = document.getElementById("portfolio-container");
-        portfolioContainer.appendChild(createPortfolioItem(project));
+
+        const item = createPortfolioItem(project);
+
+        portfolioContainer.appendChild(item);
+        portfolioItemObserver.observe(item);
       }
     });
+}
 
-  function createPortfolioItem(data) {
-    let container = document.createElement("div");
-    container.classList.add("portfolio-item", "orange-border");
+function createPortfolioItem(data) {
+  let container = document.createElement("div");
+  container.classList.add("portfolio-item");
 
-    console.log(data.color, !!data.color);
-    if (!!data.color) {
-      container.style.setProperty("--glow-color", data.color);
-    }
-
-    /* _____ IMAGE _____ */
-    let image = document.createElement("img");
-    image.alt = "";
-    image.src = data.image;
-    container.appendChild(image);
-
-    /* _____ SUMMARY _____ */
-    let summary = document.createElement("div");
-    summary.classList.add("portfolio-summary");
-    container.appendChild(summary);
-
-    /* __ Title __ */
-    let title = document.createElement("h2");
-    title.innerHTML = data.title;
-    summary.appendChild(title);
-    /* ___________ */
-
-    /* __ Tags __ */
-    let tagsContainer = document.createElement("div");
-    tagsContainer.classList.add("tags-list");
-    for (let tag of data.tags) {
-      let t = document.createElement("span");
-      t.classList.add("tag");
-      t.innerHTML = tag;
-
-      t.style.backgroundColor = tagsData?.[tag]?.color ?? "lightgray";
-      t.style.color = !!tagsData?.[tag]?.isTextLight ? LIGHT_TEXT : DARK_TEXT;
-      tagsContainer.appendChild(t);
-    }
-    summary.appendChild(tagsContainer);
-    /* __________ */
-
-    /* __ Summary __ */
-    let descriptionContainer = document.createElement("div");
-    descriptionContainer.classList.add("portfolio-description");
-    for (let paragraph of data.description) {
-      let p = document.createElement("p");
-      p.innerHTML = paragraph;
-      descriptionContainer.appendChild(p);
-    }
-    summary.appendChild(descriptionContainer);
-    /* _____________ */
-
-    /* __ Links __ */
-    let linksContainer = document.createElement("div");
-    linksContainer.classList.add("portfolio-links");
-    summary.appendChild(linksContainer);
-
-    let linksList = document.createElement("ul");
-    linksContainer.appendChild(linksList);
-
-    for (let link of data.links) {
-      let li = document.createElement("li");
-      let a = document.createElement("a");
-      a.innerHTML = link.label;
-      a.href = link.href;
-
-      if (!!link?.primary) a.classList.add("primary");
-
-      li.appendChild(a);
-      linksList.appendChild(li);
-    }
-    /* ___________ */
-
-    return container;
+  if (!!data.color) {
+    container.style.setProperty("--glow-color", data.color);
   }
 
-  /*
-  <div class="portfolio-item orange-border">
-      <img alt="" src="images/portfolio/js-markdown-editor.png">
-      <div class="portfolio-summary">
-          <h2>JS Markdown Editor</h2>
-          <p>This is a web-based Markdown notes editor that uses <a href="https://showdownjs.com/" target="_blank">ShowdownJS</a> to render markdown as HTML.</p>
-          <p>Notes are saved to the browser's <code>localStorage</code> and can be searched by keyword. Statistics provide a summary of all notes, including total notes/characters/lines.</p>
+  /* _____ IMAGE _____ */
+  let image = document.createElement("img");
+  image.alt = "";
+  image.src = data.image;
+  container.appendChild(image);
 
-          <div class="portfolio-links">
-              <ul>
-                  <li><a href="https://bcrussin.github.io/js-markdown-editor/" target="_blank">Website</a></li>
-                  <li><a href="https://github.com/bcrussin/js-markdown-editor" target="_blank">Github</a></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-*/
+  /* _____ SUMMARY _____ */
+  let summary = document.createElement("div");
+  summary.classList.add("portfolio-summary");
+  container.appendChild(summary);
+
+  /* __ Title __ */
+  let title = document.createElement("h2");
+  title.innerHTML = data.title;
+  summary.appendChild(title);
+  /* ___________ */
+
+  /* __ Tags __ */
+  let tagsContainer = document.createElement("div");
+  tagsContainer.classList.add("tags-list");
+  for (let tag of data.tags) {
+    let t = document.createElement("span");
+    t.classList.add("tag");
+    t.innerHTML = tag;
+
+    t.style.backgroundColor = tagsData?.[tag]?.color ?? "lightgray";
+    t.style.color = !!tagsData?.[tag]?.isTextLight ? LIGHT_TEXT : DARK_TEXT;
+    tagsContainer.appendChild(t);
+  }
+  summary.appendChild(tagsContainer);
+  /* __________ */
+
+  /* __ Summary __ */
+  let descriptionContainer = document.createElement("div");
+  descriptionContainer.classList.add("portfolio-description");
+  for (let paragraph of data.description) {
+    let p = document.createElement("p");
+    p.innerHTML = paragraph;
+    descriptionContainer.appendChild(p);
+  }
+  summary.appendChild(descriptionContainer);
+  /* _____________ */
+
+  /* __ Links __ */
+  let linksContainer = document.createElement("div");
+  linksContainer.classList.add("portfolio-links");
+  summary.appendChild(linksContainer);
+
+  let linksList = document.createElement("ul");
+  linksContainer.appendChild(linksList);
+
+  for (let link of data.links) {
+    let li = document.createElement("li");
+    let a = document.createElement("a");
+    a.innerHTML = link.label;
+    a.href = link.href;
+
+    if (!!link?.primary) a.classList.add("primary");
+
+    li.appendChild(a);
+    linksList.appendChild(li);
+  }
+  /* ___________ */
+
+  return container;
 }
+
+/*
+<div class="portfolio-item orange-border">
+    <img alt="" src="images/portfolio/js-markdown-editor.png">
+    <div class="portfolio-summary">
+        <h2>JS Markdown Editor</h2>
+        <p>This is a web-based Markdown notes editor that uses <a href="https://showdownjs.com/" target="_blank">ShowdownJS</a> to render markdown as HTML.</p>
+        <p>Notes are saved to the browser's <code>localStorage</code> and can be searched by keyword. Statistics provide a summary of all notes, including total notes/characters/lines.</p>
+
+        <div class="portfolio-links">
+            <ul>
+                <li><a href="https://bcrussin.github.io/js-markdown-editor/" target="_blank">Website</a></li>
+                <li><a href="https://github.com/bcrussin/js-markdown-editor" target="_blank">Github</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+*/
 
 const SCROLL_Y_MAX = 140;
 const START_FADE_OPACITY = 0.4;
