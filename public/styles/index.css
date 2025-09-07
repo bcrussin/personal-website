@@ -166,38 +166,6 @@
   overflow: hidden;
   transition: border 0.4s, background-color var(--theme-transition-duration);
 }
-#portfolio-container .portfolio-item h2 {
-  position: relative;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin-bottom: 8px;
-}
-#portfolio-container .portfolio-item h2::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  background-image: linear-gradient(100deg, #bd1321, #e23745, #e64a3f, #e66146);
-  transition: all 0.2s cubic-bezier(0.33, 1, 0.68, 1);
-}
-@media (hover: hover) and (pointer: fine) {
-  #portfolio-container .portfolio-item:hover {
-    border: 2px solid #e23745 !important;
-    filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
-  }
-  #portfolio-container .portfolio-item:hover h2::after {
-    width: 100%;
-  }
-}
-#portfolio-container .portfolio-item.highlighted {
-  border: 2px solid #e23745 !important;
-  filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
-}
-#portfolio-container .portfolio-item.highlighted h2::after {
-  width: 100%;
-}
 #portfolio-container .portfolio-item::after {
   z-index: -1;
   content: "";
@@ -214,6 +182,40 @@
 }
 #portfolio-container .portfolio-item img {
   width: 100%;
+}
+#portfolio-container .portfolio-item h2 {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 8px;
+}
+#portfolio-container .portfolio-item h2::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-image: linear-gradient(100deg, #bd1321, #e23745, #e64a3f, #e66146);
+  transition: all 0.4s;
+}
+@media (hover: hover) and (pointer: fine) {
+  #portfolio-container .portfolio-item:hover {
+    border-color: #e23745 !important;
+    filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
+  }
+  #portfolio-container .portfolio-item:hover h2::after {
+    transform: scaleX(1);
+  }
+}
+#portfolio-container .portfolio-item.highlighted {
+  border-color: #e23745 !important;
+  filter: drop-shadow(0 0 4px rgba(230, 74, 63, 0.5019607843)) !important;
+}
+#portfolio-container .portfolio-item.highlighted h2::after {
+  transform: scaleX(1);
 }
 #portfolio-container .portfolio-item .portfolio-summary {
   height: 100%;

@@ -77,8 +77,17 @@ function fadeIn() {
   });
 }
 
+// Highlight items on scroll
 const portfolioItemObserver = new IntersectionObserver(
   (entries) => {
+    const widthQuery = window.matchMedia("(max-width: 600px)");
+    const heightQuery = window.matchMedia("(max-height: 600px)");
+
+    // Only run observer on small screens
+    if (!widthQuery.matches && !heightQuery.matches) {
+      return;
+    }
+
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("highlighted");
