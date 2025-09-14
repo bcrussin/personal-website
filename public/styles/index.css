@@ -164,7 +164,7 @@
   border-radius: 12px;
   box-sizing: border-box;
   overflow: hidden;
-  transition: border 0.4s, background-color var(--theme-transition-duration);
+  transition: border 0.4s, box-shadow 0.4s, background-color var(--theme-transition-duration);
 }
 #portfolio-container .portfolio-item::after {
   z-index: -1;

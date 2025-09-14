@@ -25,7 +25,7 @@
 	border-radius: 12px;
 	box-sizing: border-box;
 	overflow: hidden;
-	transition: border 0.4s, background-color vars.$theme-transition-duration;
+	transition: border 0.4s, box-shadow 0.4s, background-color vars.$theme-transition-duration;
 
 	&::after {
 		z-index: -1;
